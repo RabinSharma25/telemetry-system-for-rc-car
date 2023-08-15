@@ -1,8 +1,8 @@
 {
-  "name": "3d",
+  "name": "Telemetry-Visualizer",
   "version": "1.0.0",
   "description": "",
-  "main": "app.js",
+  "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -11,8 +11,9 @@
   "dependencies": {
     "body-parser": "^1.20.2",
     "express": "^4.18.2",
+    "nodemon": "^3.0.1",
     "serialport": "^11.0.0",
-    "three": "^0.152.2",
-    "vite": "^4.3.8"
+    "socket.io": "^4.7.2",
+    "three": "^0.152.2"
   }
 }
