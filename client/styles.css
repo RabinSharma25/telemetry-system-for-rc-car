@@ -1,0 +1,42 @@
+body {
+  margin: 0;
+}
+
+.container {
+  display: grid;
+  height: 100vh;
+  grid-template-columns: auto auto auto;
+}
+
+.D2 {
+  background-color: pink;
+  display: grid;
+  justify-content: center;
+  align-content: center;
+}
+.D3 {
+  background-color: gray;
+  display: grid;
+  justify-content: center;
+  align-content: center;
+}
+
+.D4 {
+  background-color: red;
+  display: grid;
+  justify-content: center;
+  align-content: center;
+}
+
+.D5 {
+  background-color: green;
+  display: grid;
+  justify-content: center;
+  align-content: center;
+}
+.D6 {
+  background-color: purple;
+  display: grid;
+  justify-content: center;
+  align-content: center;
+}
