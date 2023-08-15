@@ -41,6 +41,7 @@ serialport.pipe(parser);
 parser.on("data", (data) => {
   var datas = data.toString();
   socketIO.emit("message", datas);
+  // console.log(datas);
 });
 
 
