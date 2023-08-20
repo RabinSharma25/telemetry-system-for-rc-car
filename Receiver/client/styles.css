@@ -8,12 +8,16 @@ body {
   grid-template-columns: auto auto auto;
 }
 
+.D1 {
+}
+
 .D2 {
   background-color: pink;
   display: grid;
   justify-content: center;
   align-content: center;
 }
+
 .D3 {
   background-color: gray;
   display: grid;
@@ -22,10 +26,6 @@ body {
 }
 
 .D4 {
-  /* background-color: red;
-  display: grid;
-  justify-content: center;
-  align-content: center; */
 }
 
 .D5 {
@@ -34,9 +34,7 @@ body {
   justify-content: center;
   align-content: center;
 }
-/* .D6 {
-  background-color: purple;
-  display: grid;
-  justify-content: center;
-  align-content: center;
-} */
+.D6 {
+
+
+}
