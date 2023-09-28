@@ -25,7 +25,7 @@ server.listen(3000, function () {
 
 // Getting serial data from arduino
 var serialport = new SerialPort({
-  path: "/dev/ttyACM0",
+  path: "/dev/ttyUSB0",
   baudRate: 9600
 });
 

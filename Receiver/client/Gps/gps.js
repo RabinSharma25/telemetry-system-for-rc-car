@@ -17,7 +17,7 @@ socketIO.on("message", async (mess) => {
 	if (diff > delay) {
 		long = parseFloat(dataArray[3]);
 		lati = parseFloat(dataArray[4]);
-		console.log(long, lati);
+		console.log("gps data",long, lati);
 		lastUpdate = new Date();
 
 
