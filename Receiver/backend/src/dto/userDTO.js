@@ -1,7 +1,7 @@
 
 
 // request DTO
-class CreateUserDTO {
+class UserReq {
     constructor({ firstName, lastName, email }) {
       this.firstName = firstName;
       this.lastName = lastName;
@@ -10,15 +10,15 @@ class CreateUserDTO {
   }
 
 // Response DTO
-  class UserDTO {
-    constructor(userModel) {
-      this.id = userModel.id;
-      this.firstName = userModel.firstName;
-      this.lastName = userModel.lastName;
-      this.email = userModel.email;
+  class UserRes {
+    constructor({id, firstName,lastName,email}) {
+      this.id =id;
+      this.firstName = firstName;
+      this.lastName = lastName;
+      this.email = email;
     }
   }
   
 //   module.exports = UserDTO;
   
-  module.exports = CreateUserDTO,UserDTO;
+  module.exports = {UserReq,UserRes};

@@ -3,21 +3,21 @@
 // https://account.mapbox.com
 
 let dataArray;
-var socketIO = io();
 let long;
 let lati;
 let delay = 10;
 let lastUpdate = new Date();
+const socket = new WebSocket("ws://localhost:3000");
 
 lastUpdate.setSeconds(lastUpdate.getSeconds() - (delay + 1));
-socketIO.on("message", async (mess) => {
-	dataArray = mess.split(',');
+socket.addEventListener("message", async (mess) => {
+	dataArray = mess.data.split(',');
 	let diff = (Math.floor((new Date().getTime()) - (lastUpdate.getTime()))) / 1000;
 
 	if (diff > delay) {
 		long = parseFloat(dataArray[3]);
 		lati = parseFloat(dataArray[4]);
-		console.log("gps data",long, lati);
+		console.log("gps data", long, lati);
 		lastUpdate = new Date();
 
 
