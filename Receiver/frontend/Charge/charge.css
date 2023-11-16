@@ -53,14 +53,14 @@
   font-size: 1.7em;
   margin-top: 1.4em;
 }
-.active {
+/* .active {
   animation: charge-animation 3s infinite linear;
-}
-@keyframes charge-animation {
+} */
+/* @keyframes charge-animation {
   0% {
     width: 0;
   }
   100% {
     width: 16.25em;
   }
-}
+} */

@@ -10,15 +10,18 @@ let yaw;
 
 // let data;
 let dataArray;
-var socketIO = io();
-// var mess;
-socketIO.on("message", (mess) => {
-	dataArray = mess.split(',');
-	roll = degrees_to_radians(parseFloat(dataArray[0]));
-	pitch = degrees_to_radians(parseFloat(dataArray[1]));
-	yaw = degrees_to_radians(parseFloat(dataArray[2]));
-	console.log("Imu data",roll,pitch,yaw)
-	// document.getElementById("informationShow").innerHTML = mess
+
+
+const socket = new WebSocket("ws://localhost:3000");
+
+socket.addEventListener("message", (event) => {
+  event.preventDefault(); // Prevent the default behavior
+  dataArray = event.data.split(',');
+  roll = degrees_to_radians(parseFloat(dataArray[0]));
+  pitch = degrees_to_radians(parseFloat(dataArray[1]));
+  yaw = degrees_to_radians(parseFloat(dataArray[2]));
+  console.log("Imu data",roll,pitch,yaw)
+
 });
 
 // /***************socket.io********************/

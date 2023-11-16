@@ -2,6 +2,7 @@
 
 const express = require("express");
 const http = require("http");
+const apiRoutes = require('./src/routes/api');
 const WebSocket = require("ws");
 const { SerialPort } = require("serialport");
 const { ReadlineParser } = require("@serialport/parser-readline");
@@ -13,6 +14,7 @@ const wss = new WebSocket.Server({ server });
 
 const parser = new ReadlineParser({ delimiter: "\n" });
 
+app.use('/api', apiRoutes); // to call use http://localhost:3000/api/users/users
 server.listen(3000, function () {
   console.log("Server is running on port 3000.");
 });
@@ -56,3 +58,12 @@ process.on("exit", () => {
   console.log("CSV file closed");
 
 });
+
+
+/*
+to kill a process using the port number
+lsof -i :3000 // this command will give you pid of process running in port 3000
+kill -9 pid
+
+
+*/
