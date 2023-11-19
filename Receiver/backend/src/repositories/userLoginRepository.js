@@ -6,6 +6,7 @@ const User = require('../models/user');
 
 // Function to find a user by email
 async function findUserByEmail(email) {
+  logger.info("User login repository");
   try {
     const user = await User.findOne({
       where: { email: email },

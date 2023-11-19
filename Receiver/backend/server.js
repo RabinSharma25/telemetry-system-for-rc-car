@@ -5,6 +5,7 @@ const http = require("http");
 const apiRoutes = require('./src/routes/api');
 const WebSocket = require("ws");
 const { SerialPort } = require("serialport");
+const logger = require("./src/utils/logger");
 const { ReadlineParser } = require("@serialport/parser-readline");
 const fs = require("fs");
 
@@ -16,7 +17,7 @@ const parser = new ReadlineParser({ delimiter: "\n" });
 
 app.use('/api', apiRoutes); // to call use http://localhost:3000/api/users/users
 server.listen(3000, function () {
-  console.log("Server is running on port 3000.");
+  logger.info("Server is running on port 3000.");
 });
 
 var serialport = new SerialPort({
@@ -26,7 +27,7 @@ var serialport = new SerialPort({
 
 serialport.open((err) => {
   if (err) {
-    console.log("Error opening the port" + err.message);
+    // console.log("Error opening the port" + err.message);
   }
 });
 

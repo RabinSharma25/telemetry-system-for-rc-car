@@ -5,10 +5,11 @@ const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 
 const secretKey = 'your_secret_key'; // Replace with a secure secret key
-
+const logger = require("../utils/logger");
 
 UserLoginRepository = require('../repositories/userLoginRepository')
 async function findUserByEmail(email) {
+    logger.info("User login service")
     return UserLoginRepository.findUserByEmail(email);
 }
 
