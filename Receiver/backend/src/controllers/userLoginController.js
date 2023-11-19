@@ -7,12 +7,14 @@ const cookieParser = require('cookie-parser');
 
 const { LoginReq, LoginRes } = require('../dto/userLoginDTO');
 const UserLoginService = require('../services/userLoginService');
-
+const logger = require("../utils/logger");
 router.use(bodyParser.json());
 router.use(cookieParser());
+
+// logger.info("User login controller");
 router.post('/login', async (req, res) => {
     try {
-
+        logger.info("User login controller.")
         let { email, password } = req.body;
         let message, success,jwt;
         const loginReq = new LoginReq({ email, password })

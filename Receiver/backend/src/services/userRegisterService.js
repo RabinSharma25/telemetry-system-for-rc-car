@@ -1,10 +1,12 @@
 // src/services/userService.js
 
 const UserRegisterRepository = require('../repositories/userRegisterRepository');
+const logger = require("../utils/logger")
 const bcrypt = require('bcrypt');
 const saltRounds = 10;
 
   async function  createUser(userData) {
+    logger.info("User register service");
     return UserRegisterRepository.createUser(userData);
   }
 

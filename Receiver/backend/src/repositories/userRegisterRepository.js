@@ -5,7 +5,8 @@ const User = require('../models/user');
 
 class UserRegisterRepository {
   static async createUser(userData) {
-    logger.info("UserRepository\n");
+    
+    logger.info("User register repository");
     const user = await User.create(userData);
     return user;
   }
