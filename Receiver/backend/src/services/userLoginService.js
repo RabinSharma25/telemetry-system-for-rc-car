@@ -13,8 +13,6 @@ async function findUserByEmail(email) {
     return UserLoginRepository.findUserByEmail(email);
 }
 
-
-
 // Function to check if a password matches a hashed password
 async function comparePasswords(plainPassword, hashedPassword) {
   try {

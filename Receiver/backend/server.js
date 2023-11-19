@@ -1,5 +1,3 @@
-
-
 const express = require("express");
 const http = require("http");
 const apiRoutes = require('./src/routes/api');
