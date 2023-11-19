@@ -6,10 +6,11 @@ this.password = password;
 }
 
 class LoginRes{
-constructor({name, message, success}){
-    this.name = name;
+constructor({ message, success,jwt}){
+
     this.message = message;
     this.success = success;
+    this.jwt = jwt
 }
 }
 
