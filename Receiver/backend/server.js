@@ -19,7 +19,7 @@ server.listen(3000, function () {
 });
 
 var serialport = new SerialPort({
-  path: "/dev/ttyUSB0",
+  path: "/dev/ttyACM0",
   baudRate: 9600
 });
 
@@ -41,16 +41,13 @@ parser.on("data", (data) => {
   wss.clients.forEach((client) => {
     if (client.readyState === WebSocket.OPEN) {
       const datas = data.toString();
-      console.log("Serial data");
+      // console.log("Serial data");
       console.log(datas);
       client.send(datas);
     }
   });
 });
 
-// wss.on("connection", (ws) => {
-//   // Handle WebSocket connections here if needed
-// });
 
 process.on("exit", () => {
   outputStream.end();
