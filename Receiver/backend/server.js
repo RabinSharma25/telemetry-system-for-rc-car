@@ -13,7 +13,10 @@ const wss = new WebSocket.Server({ server });
 
 const parser = new ReadlineParser({ delimiter: "\n" });
 
-app.use('/api', apiRoutes); // to call use http://localhost:3000/api/users/users
+app.use('/api', apiRoutes); 
+// to call use
+// http://localhost:3000/api/register/register
+// http://localhost:3000/api/login/login
 server.listen(3000, function () {
   logger.info("Server is running on port 3000.");
 });
