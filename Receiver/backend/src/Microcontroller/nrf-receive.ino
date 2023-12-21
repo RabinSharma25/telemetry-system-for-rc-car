@@ -25,7 +25,7 @@ struct package
     int charge_bat = 0;
     int charge_mod = 0;
     float temperature = 0;
-    int velocity = 0;
+    float velocity = 0;
 };
 
 typedef struct package Package;
