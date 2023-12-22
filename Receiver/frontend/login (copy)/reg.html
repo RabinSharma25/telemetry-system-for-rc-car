@@ -2,6 +2,8 @@
 <head>
   <title>Regiter With Us</title>
   <link rel="stylesheet" type="text/css" href="style.css">
+ 
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@10">
 </head>
 <body>
   <div id="main">
@@ -59,9 +61,16 @@
         body: fullJSON
       })
       .then(response => {
-        if (response.ok) {
-          console.log('Form submitted successfully!');
-          // You can perform other actions here after successful submission
+            if (response.ok) {
+       console.log('Registeration successfully!');
+         Swal.fire({
+          icon: 'success',
+          title: 'Registeration Successful',
+          text: 'Redirecting to Login Page.'
+        });
+       setTimeout(() => {
+        window.location.replace('login.html'); // Redirect to welcome.html after 3 seconds
+      }, 2000);
         } else {
           console.log('Form submission failed!');
         }
@@ -74,6 +83,7 @@
     // Event listener for form submission
     document.getElementById("myForm").addEventListener("submit", submitForm);
   </script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 
 </body>
 </html>

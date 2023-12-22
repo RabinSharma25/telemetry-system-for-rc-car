@@ -3,17 +3,21 @@
 <head>
 <title>Login</title>
 <link rel="stylesheet" type="text/css" href="style.css">
+<!-- CSS -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@10">
+
+
 </head>
   <body>
     <form id="Loginform">
   <!-- Main div code -->
   <div id="main">
   <div class="h-tag">
-  <h2 id="signin">Enter your Credentials </h2>
+  <h2>Create Your Account</h2>
   </div>
   <!-- create account div -->
   <div class="login">
-  <table cellspacing="2" align="center" cellpadding="8">
+  <table cellspacing="2" align="center" cellpadding="8" border="0">
   <tr>
   <td align="center">Enter Email ID :</td>
   <td><input type="text" placeholder="Enter Email ID here" name="email" id="email" class="tb" /></td>
@@ -25,50 +29,63 @@
   <tr>
   <td></td>
   <td>
-  <input type="submit" value="Sign In" class="btn"></td>
-  </tr>	  
-  </table>
-  <p align="center"><a href="reg.html">Don't have an account?</a></p>
-
+  <input type="submit" value="Create Account"></td>
+  </tr>
+</table>
   </div>
   </div>
 </form>
-<script>
+ <script>
   function submitForm(event) {
-      event.preventDefault(); // Prevent the default form submission
+    event.preventDefault(); // Prevent the default form submission
   
-      var formData = new FormData(document.getElementById("Loginform"));
-     
-      var jsonObject = {
-    email: formData.get('email'),
-    password: formData.get('password')
-  };
-  var fullJSON = JSON.stringify(jsonObject, null, 2); // Convert the object to full JSON format
-  console.log(fullJSON); // Output the full JSON string to console
-
-
-      fetch('http://localhost:3000/api/login/login', {
-        method: 'POST',
-        headers: {
-    'Content-Type': 'application/json', 'Content-Length': `${fullJSON.length}`},
-        body: fullJSON
-      })
-      .then(response => {
-        if (response.ok) {
-          console.log('Login successfully!');
-          // You can perform other actions here after successful submission
-        } else {
-          console.log('Login failed!');
-        }
-      })
-      .catch(error => {
-        console.error('Error:', error);
-      });
-    }
+    var formData = new FormData(document.getElementById("Loginform"));
+    var jsonObject = {
+      email: formData.get('email'),
+      password: formData.get('password')
+    };
+    var fullJSON = JSON.stringify(jsonObject); // Convert the object to JSON format
   
-    // Event listener for form submission
-    document.getElementById("Loginform").addEventListener("submit", submitForm);</script>
+    fetch('http://localhost:3000/api/login/login', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: fullJSON
+    })
+    .then(response => {
+      if (response.ok) {
+        console.log('Login successfully!');
+         Swal.fire({
+          icon: 'success',
+          title: 'Login Successful',
+          text: 'Welcome to Telemetry for RC Car.'
+        });
+       setTimeout(() => {
+        window.location.replace('welcome.html'); // Redirect to welcome.html after 3 seconds
+      }, 2000);
+      } else {
+        console.log('Login failed!');
+        // Show a custom styled modal for incorrect credentials
+            Swal.fire({
+          icon: 'error',
+          title: 'Login Failed',
+          text: 'Credentials are incorrect.'
+        });
+      }
+    })
+    .catch(error => {
+      console.error('Error:', error);
+    });
+  }
 
+  // Event listener for form submission
+  document.getElementById("Loginform").addEventListener("submit", submitForm);
+</script>
+
+<!-- JS -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 
   </body>
   </html>
+  git 
