@@ -31,16 +31,18 @@
 #include <SoftwareSerial.h>
 
 Madgwick filter;
+float voltage = 0;
+int analogPin1 = A0;
+int analogPin2 = A3;
+
 
 const int speedSensor1Pin = 2;  // Replace with the pin number you want to monitor
 const int speedSensor2Pin = 3;  // Replace with the pin number you want to monitor
-unsigned long lastResetTime = 0;
-const unsigned long resetInterval = 3000;
-int state1 = LOW;  // Start with the pin in a known state
-int count1 = 0;
-int prevState1 = LOW;
-int state2 = LOW;  // Start with the pin in a known state
-int count2 = 0;
+volatile unsigned int count1 = 0;
+volatile unsigned int count2 = 0;
+
+unsigned long previousMillis = 0;
+const long interval = 2000; // Interval for printing pulses in milliseconds
 
 
 int16_t GyroX, GyroY, GyroZ, AccX, AccY, AccZ, Temp;
@@ -58,10 +60,10 @@ struct package
     float yaw = 0;
     float longi = 0;
     float lati = 0;
-    int charge_bat = 45;
-    int charge_mod = 3389;
-    float temperature = 7899;
-    float velocity = 0;
+    float charge_rc = 0;
+    float charge_mod = 0;
+    int temperature = 0;
+    int velocity = 0;
 };
 
 typedef struct package Package;
@@ -77,8 +79,15 @@ void setup()
 {
     Serial.begin(9600);
     SerialGPS.begin(9600);
-   pinMode(speedSensor1Pin, INPUT);
-   pinMode(speedSensor2Pin, INPUT);
+  pinMode(speedSensor1Pin,INPUT);
+  pinMode(speedSensor2Pin,INPUT);
+     pinMode(analogPin1,INPUT);
+     pinMode(analogPin2,INPUT);
+  attachInterrupt(digitalPinToInterrupt(speedSensor1Pin), countRotations1, FALLING);
+ attachInterrupt(digitalPinToInterrupt(speedSensor2Pin), countRotations2, FALLING); 
+
+   
+
     Wire.begin();
     delay(1000);
     myRadio.begin();
@@ -93,11 +102,7 @@ void setup()
 
 void loop()
 {
-  int currentState1 = digitalRead(speedSensor1Pin);
-  if(currentState1 != prevState1){
-    count1++;
-  }
-  
+
     //  Serial.println("I am at the begining");
     RecordMpuData(); // This function is meant to get the latest measurements from the mpu6050
     // update the filter, which computes orientation
@@ -106,6 +111,8 @@ void loop()
     data.roll = filter.getRoll();
     data.pitch = filter.getPitch();
     data.yaw = filter.getYaw();
+    
+    data.temperature = Temp;
 
     // Serial.println("I am here ");
     while (SerialGPS.available() > 0)
@@ -124,18 +131,37 @@ void loop()
             }
         }
     }
+  data.charge_mod= batteryVoltage(analogPin1);
+  data.charge_rc = batteryVoltage(analogPin2);
 
-    myRadio.write(&data, sizeof(data));
+    unsigned long currentMillis = millis();
+  if (currentMillis - previousMillis >= interval)
+  {
+    previousMillis = currentMillis;
+  if(count1>=count2)
+  {
+//        Serial.print("The value of count1 is :");
+//    Serial.println(count1);;
+    data.velocity= count1;
+  }
+  else
+  {
+//        Serial.print("The value of count2 is :");
+//    Serial.println(count2);;
+    data.velocity = count2;
+  }
+    count2 =0;
+    count1= 0;
+  }
+//    Serial.println(data.velocity);
+  myRadio.write(&data, sizeof(data));
+  
+
     //   PrintData();
 
-  if(millis() - lastResetTime >= resetInterval){
-    data.velocity = count1/2.0;
-    count1 = 0;
-    lastResetTime = millis();
-  }
-   prevState1 = currentState1;
-   
 }
+
+
 
 void SetUpMpu6050()
 {
@@ -218,6 +244,12 @@ void ProcessTempData()
 }
 
 
+float batteryVoltage(int analogPin){
+  // 1023/(5*4.82) = 42.45
+  float voltage = float(analogRead(analogPin)/42.45)+0.04; // the last 0.4 is for error correction 
+  return voltage;
+}
+
 void PrintData()
 {
     // This function is meant for debugging purpose
@@ -231,11 +263,22 @@ void PrintData()
     Serial.print(",");
     Serial.print(data.lati);
     Serial.print(",");
-    Serial.print(data.charge_bat);
+    Serial.print(data.charge_rc);
     Serial.print(",");
     Serial.print(data.charge_mod);
     Serial.print(",");
     Serial.print(data.temperature);
     Serial.print(",");
     Serial.println(data.velocity);
+}
+
+
+void countRotations1() {
+//  Serial.println("Apple");
+  count1++;
+}
+
+void countRotations2() {
+//  Serial.println("Mango");
+  count2++;
 }

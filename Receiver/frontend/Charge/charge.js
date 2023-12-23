@@ -13,7 +13,7 @@ function  updateLevelInfo(val) {
   chargingTimeRef.innerText = "1 hr and 21 min remaining";
 }
 
-updateLevelInfo(56);
+// updateLevelInfo(56);
 // socket.
 const socket = new WebSocket("ws://localhost:3000");
 
