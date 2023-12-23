@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Temperature Gauge with Custom Gradient Fill</title>
+  <style>
+    /* Styling for the gauge */
+    .gauge {
+      width: 200px;
+      height: 200px;
+      border-radius: 50%;
+      border: 10px solid #ccc;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .fill {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      clip: rect(0, 200px, 200px, 100px);
+      background: radial-gradient(at center, 
+                  var(--ice-color) var(--ice-level), 
+                  var(--moderate-color) var(--moderate-level), 
+                  var(--fire-color) var(--fire-level)); /* Gradient colors */
+      transform-origin: center;
+      transform: rotate(-90deg); /* Rotate the gradient content horizontally */
+      animation: pulseAnimation 2s ease-in-out infinite;
+    }
+
+    .text {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 24px;
+    }
+
+    @keyframes pulseAnimation {
+      0% {
+        transform: scale(0.9);
+        opacity: 0.7;
+      }
+      50% {
+        transform: scale(1);
+        opacity: 1;
+      }
+      100% {
+        transform: scale(0.9);
+        opacity: 0.7;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="gauge">
+    <div class="fill" style="--ice-level: 40%; --moderate-level: 60%; --fire-level: 100%;"></div>
+    <div class="text">0°C</div>
+  </div>
+  <script>
+      var temperature = parseInt('40');
+      const fill = temp;
+       var text;
+      // Update text content
+      text.textContent = temperature + '°C';
+
+      // Calculate fill levels based on temperature
+      let iceLevel = 0;
+      let moderateLevel = 0;
+      let fireLevel = 0;
+
+      if (temperature <= 0) {
+        iceLevel = 100;
+      } else if (temperature <= 25) {
+        moderateLevel = (temperature / 25) * 100;
+      } else {
+        moderateLevel = 100;
+        fireLevel = ((temperature - 25) / 25) * 100;
+      }
+
+      // Update gradient levels based on temperature
+      fill.style.setProperty('--ice-level', iceLevel + '%');
+      fill.style.setProperty('--moderate-level', moderateLevel + '%');
+      fill.style.setProperty('--fire-level', fireLevel + '%');
+      
+      // Define colors for different temperature ranges
+      const iceColor = '#82c0ff'; // Ice color
+      const moderateColor = '#f9e000'; // Moderate color
+      const fireColor = '#ff5733'; // Fire color
+      
+      // Update colors based on temperature
+      fill.style.setProperty('--ice-color', iceColor);
+      fill.style.setProperty('--moderate-color', moderateColor);
+      fill.style.setProperty('--fire-color', fireColor);
+
+  </script>
+</body>
+</html>
