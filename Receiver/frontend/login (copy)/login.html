@@ -49,8 +49,7 @@
     fetch('http://localhost:3000/api/login/login', {
       method: 'POST',
       headers: {
-        'Content-Type': 'application/json'
-      },
+        'Content-Type': 'application/json', 'Content-Length': `${fullJSON.length}`},
       body: fullJSON
     })
     .then(response => {
@@ -88,4 +87,3 @@
 
   </body>
   </html>
-  git 
