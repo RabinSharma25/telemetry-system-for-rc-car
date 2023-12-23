@@ -22,10 +22,10 @@ struct package
     float yaw = 0;
     float longi = 0;
     float lati = 0;
-    int charge_bat = 0;
-    int charge_mod = 0;
-    float temperature = 0;
-    float velocity = 0;
+    float charge_rc = 4.4;
+    float charge_mod = 4.4;
+    int temperature = 4.9;
+    int velocity = 0;
 };
 
 typedef struct package Package;
@@ -46,6 +46,7 @@ void setup()
 
 void loop()
 {
+//   Serial.println(sizeof(data));
     if (myRadio.available())
     {
         while (myRadio.available())
@@ -62,7 +63,7 @@ void loop()
         Serial.print(",");
         Serial.print(data.lati);
         Serial.print(",");
-        Serial.print(data.charge_bat);
+        Serial.print(data.charge_rc);
         Serial.print(",");
         Serial.print(data.charge_mod);
         Serial.print(",");
@@ -70,4 +71,8 @@ void loop()
         Serial.print(",");
         Serial.println(data.velocity);
     }
+//
+//    if(data.velocity != 0){
+//      Serial.println("This is a cata");
+//    }
 }
