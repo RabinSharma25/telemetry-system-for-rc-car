@@ -5,13 +5,30 @@
   <style>
     /* Styling for the gauge */
     .gauge {
+		display: flex;
+  justify-content: center;
+  align-items: center;
       width: 200px;
       height: 200px;
       border-radius: 50%;
-      border: 10px solid #ccc;
-      position: relative;
-      overflow: hidden;
+      border: 110px solid #99868688;
+	  background: linear-gradient(to right,#767676
+,#969696); 
+	  box-shadow: inset 2 0 0 10px #565656, 10 21 20px rgba(168, 84, 200, 76); /* Gradient-like border */     
+	   position: relative;
+	  overflow: hidden;
+
+
     }
+	.centering{
+		top: 200px;;
+		position: relative;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+  align-items: center;
+  
+	}
 
     .fill {
       position: absolute;
@@ -24,8 +41,9 @@
                   var(--moderate-color) var(--moderate-level), 
                   var(--fire-color) var(--fire-level)); /* Gradient colors */
       transform-origin: center;
-      transform: rotate(-90deg); /* Rotate the gradient content horizontally */
-      animation: pulseAnimation 2s ease-in-out infinite;
+      transform: rotate(calc(var(--rotate, -90deg))); /* Rotate the gradient content horizontally */
+      transition: transform 0.5s ease-in-out;
+      animation: pulseAnimation 2s infinite alternate ease-in-out; /* Animation */
     }
 
     .text {
@@ -33,34 +51,37 @@
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
-      font-size: 24px;
+      font-size: 28px; /* Increased font size */
+      font-weight: bold; /* Bold font */
+      color: #333; /* Attractive color */
+      font-family: Arial, sans-serif; /* Font family */
     }
 
     @keyframes pulseAnimation {
       0% {
         transform: scale(0.9);
-        opacity: 0.7;
-      }
-      50% {
-        transform: scale(1);
-        opacity: 1;
       }
       100% {
-        transform: scale(0.9);
-        opacity: 0.7;
+        transform: scale(1.1);
       }
     }
   </style>
 </head>
-<body>
+<body><div class="centering">
   <div class="gauge">
     <div class="fill" style="--ice-level: 40%; --moderate-level: 60%; --fire-level: 100%;"></div>
     <div class="text">0°C</div>
   </div>
+</div>
+
   <script>
-      var temperature = parseInt('40');
-      const fill = temp;
-       var text;
+    const temperature = 29; // Change this value only
+    updateGauge(temperature);
+
+    function updateGauge(temperature) {
+      const fill = document.querySelector('.fill');
+      const text = document.querySelector('.text');
+
       // Update text content
       text.textContent = temperature + '°C';
 
@@ -84,15 +105,19 @@
       fill.style.setProperty('--fire-level', fireLevel + '%');
       
       // Define colors for different temperature ranges
-      const iceColor = '#82c0ff'; // Ice color
-      const moderateColor = '#f9e000'; // Moderate color
-      const fireColor = '#ff5733'; // Fire color
+      const iceColor = '#B6B6B6'; // Ice color
+      const moderateColor = '#D7D7D7'; // Moderate color
+      const fireColor = '#ff7e5f'; // Fire color
       
       // Update colors based on temperature
       fill.style.setProperty('--ice-color', iceColor);
       fill.style.setProperty('--moderate-color', moderateColor);
       fill.style.setProperty('--fire-color', fireColor);
-
+      
+      // Rotate the gauge based on temperature (optional)
+      const rotation = temperature <= 25 ? -90 + (temperature * 2) : 0;
+      fill.style.setProperty('--rotate', rotation + 'deg');
+    }
   </script>
 </body>
 </html>
