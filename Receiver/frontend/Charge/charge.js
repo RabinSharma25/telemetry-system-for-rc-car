@@ -5,12 +5,14 @@ const chargingTimeRef = document.getElementById("charging-time");
 let dataArray;
 let value;
 let val = 100;
+let hrs = 23;
+let mins = 59;
 
-function  updateLevelInfo(val) {
+function  updateLevelInfo(val,remBtTime) {
   let batteryLevel = val + "%";
   chargeElement.style.width = batteryLevel;
   chargeLevelElement.textContent = batteryLevel;
-  chargingTimeRef.innerText = "1 hr and 21 min remaining";
+  chargingTimeRef.innerText = remBtTime;
 }
 
 // updateLevelInfo(56);
@@ -21,12 +23,13 @@ socket.addEventListener("message", (event) => {
   event.preventDefault(); // Prevent the default behavior
   dataArray = event.data.split(',');
   console.log(dataArray);
-  value = parseFloat(dataArray[6]);
+  value = parseFloat(dataArray[5]);
   let mappedValue = mapRange((value-6), 0, 2.4, 0, 100);
   if(mappedValue<val){
     val = mappedValue;
   }
-  updateLevelInfo(val);
+  let remainingBattTime = calculateRemainingTime( value);
+  updateLevelInfo(val,remainingBattTime);
 });
 
 function mapRange(value, fromMin, fromMax, toMin, toMax) {
@@ -42,3 +45,37 @@ function mapRange(value, fromMin, fromMax, toMin, toMax) {
   return mappedValue;
 }
 
+function calculateRemainingTime(currentVoltage) {
+
+  const batteryCapacity = 2000; // in mAh
+const currentConsumption = 1000; // in mA (milliamps)
+
+const minVoltageThreshold = 1
+if (currentVoltage < minVoltageThreshold) {
+  return "0 hr and 0 min remaining";
+}
+
+  // Calculate remaining capacity based on voltage
+  const remainingCapacity = (currentVoltage / 4.2) * batteryCapacity;
+
+  // Calculate remaining time
+  const remainingTimeHours = remainingCapacity / currentConsumption;
+
+  // Convert remaining time to hours and minutes
+  const hours = Math.floor(remainingTimeHours);
+  const minutes = Math.round((remainingTimeHours - hours) * 60);
+
+// this is to avoid the noise 
+if(hours<hrs){
+  hrs = hours
+}
+if(minutes<mins){
+  mins = minutes
+}
+ // Create log message
+
+ const logMessage = ` ${hrs} hr and ${mins} min remaining`;
+
+ // Return the log message
+ return logMessage;
+}
