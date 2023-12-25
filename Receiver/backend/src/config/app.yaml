@@ -2,4 +2,4 @@ host: localhost
 port: 5432
 database: telemetry
 user: postgres
-password: "12345678"
+password: "rabin@#123"
