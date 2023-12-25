@@ -4,7 +4,7 @@ body
     margin:0px;
     color:#f9fcf5;
     font-family:Arial, Helvetica, sans-serif;
-    background-image: url("oo.jpg");
+    background-image: url("../Assets/oo.jpg");
     background-size: 100%;
     width: 100%;
     height: 100%;    
@@ -63,7 +63,7 @@ font-size:14px; background-color:#f1f1f1; -webkit-transition: 1s; -moz-transitio
 
   
 .land{
-    background-image: url("back2.jpg");
+    background-image: url("../Assets/back2.jpg");
 }
 .login{
  font-size: larger;
