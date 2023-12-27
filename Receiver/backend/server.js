@@ -22,7 +22,7 @@ server.listen(3000, function () {
 });
 
 var serialport = new SerialPort({
-  path: "/dev/ttyUSB0",
+  path: "/dev/ttyACM1",
   baudRate: 9600
 });
 
