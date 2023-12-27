@@ -3,6 +3,8 @@ function degrees_to_radians(degrees) {
 	return degrees * (pi / 180);
 }
 
+
+
 // /***************socket.io********************/
 let roll;
 let pitch;
@@ -66,6 +68,29 @@ function animate() {
 
 }
 
+function toggleFullScreen() {
+	if (!document.fullscreenElement) {
+	  scene3d.requestFullscreen().catch((err) => {
+		console.error(`Error attempting to enable full-screen mode: ${err.message}`);
+	  });
+	} else {
+	  document.exitFullscreen();
+	}
+  }
+  
+  // Handle double-tap event
+  let lastTapTime = 0;
+  
+  scene3d.addEventListener('click', (event) => {
+	const currentTime = new Date().getTime();
+	const timeSinceLastTap = currentTime - lastTapTime;
+  
+	if (timeSinceLastTap < 300) {
+	  toggleFullScreen();
+	}
+  
+	lastTapTime = currentTime;
+  });
 animate();
 
 //Reference 
