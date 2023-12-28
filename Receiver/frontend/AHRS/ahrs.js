@@ -25,9 +25,6 @@ socket.addEventListener("message", (event) => {
   console.log("Imu data",roll,pitch,yaw)
 
 });
-
-// /***************socket.io********************/
-
 import * as THREE from 'three';
 var scene3d = document.getElementById("scene3d");
 var w = scene3d.offsetWidth;
@@ -67,6 +64,10 @@ function animate() {
 	renderer.render(scene, camera);
 
 }
+
+// Create a FontLoader to load the font for text geometry
+
+
 
 function toggleFullScreen() {
 	if (!document.fullscreenElement) {
