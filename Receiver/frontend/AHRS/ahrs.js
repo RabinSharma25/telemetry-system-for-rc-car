@@ -3,6 +3,8 @@ function degrees_to_radians(degrees) {
 	return degrees * (pi / 180);
 }
 
+
+
 // /***************socket.io********************/
 let roll;
 let pitch;
@@ -66,7 +68,29 @@ function animate() {
 
 }
 
+function toggleFullScreen() {
+	if (!document.fullscreenElement) {
+	  scene3d.requestFullscreen().catch((err) => {
+		console.error(`Error attempting to enable full-screen mode: ${err.message}`);
+	  });
+	} else {
+		window.location.replace('../indexatt.html'); // Redirect to welcome.html after 3 seconds
+	  document.exitFullscreen();
+	}
+  }
+  
+  // Handle double-tap event
+  let lastTapTime = 0;
+  
+  scene3d.addEventListener('click', (event) => {
+	const currentTime = new Date().getTime();
+	const timeSinceLastTap = currentTime - lastTapTime;
+  
+	if (timeSinceLastTap < 300) {
+		// window.location.replace('ahrs.html'); // Redirect to welcome.html after 3 seconds
+	    toggleFullScreen();
+	}
+  
+	lastTapTime = currentTime;
+  });
 animate();
-
-//Reference 
-//https://dustinpfister.github.io/2021/04/28/threejs-euler/

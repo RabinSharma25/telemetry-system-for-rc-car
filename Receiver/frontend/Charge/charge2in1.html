@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Responsive Divs</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      border: 0px;
+      /* box-sizing: border-box; */
+    }
+
+    body, html {
+      /* display: flex; */
+      height: 100%;
+      justify-content: center; /* Center horizontally */
+      align-items: center; /* Center vertically */
+      background-color: white;
+      overflow: hidden;
+    }
+
+    .container {
+      display: flex;
+      height: 100%;
+    }
+
+    .half-width {
+      width: 50%;
+    }
+
+    .half-height {
+      height: 50%;
+    }
+
+    .box {
+      border: 0px;
+    }
+
+
+    /* Responsive adjustments */
+    @media screen and (max-width: 768px) {
+      .container {
+        flex-direction: column; /* Stack divs vertically on smaller screens */
+      }
+      .half-width {
+        width: 100%;
+      }
+      .half-height {
+        height: 50%;
+      }
+    }
+
+    @media screen and (max-width: 480px) {
+      .half-height {
+        height: 100%;
+      }
+    }
+    .fullscreen-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0); /* Adjust transparency as needed */
+      display: none; /* Initially hidden */
+      z-index: 999; /* Ensure it's above other content */
+    }
+
+  </style>
+</head>
+<body>
+  <div class="fullscreen-overlay">
+ 
+  <div class="container">
+    <div class="half-width half-height box">
+    <iframe src="charge.html" style="width:100% ;height:100%"></iframe>
+    </div>
+    <div class="half-width half-height box">
+      <iframe src="charge2.html" style="width:100% ;height:100%"></iframe>
+    </div>
+  </div>
+  </div>
+<script>
+const overlay = document.querySelector('.fullscreen-overlay');
+
+function toggleFullScreen() {
+  if (!document.fullscreenElement) {
+    document.documentElement.requestFullscreen().catch((err) => {
+      console.error(`Error attempting to enable full-screen mode: ${err.message}`);
+    });
+  } else {
+    document.exitFullscreen();
+  }
+}
+
+overlay.addEventListener('dblclick', toggleFullScreen);
+</script>
+</body>
+</html>
