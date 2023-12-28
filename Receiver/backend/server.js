@@ -64,5 +64,6 @@ to kill a process using the port number
 lsof -i :3000 // this command will give you pid of process running in port 3000
 kill -9 pid
 
-
 */
+
+// updated my email
