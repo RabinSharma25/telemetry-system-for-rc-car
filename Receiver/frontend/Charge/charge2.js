@@ -10,7 +10,7 @@ function  updateLevelInfo(val) {
   let batteryLevel = val + "%";
   chargeElement.style.width = batteryLevel;
   chargeLevelElement.textContent = batteryLevel;
-  chargingTimeRef.innerText = "1 hr and 21 min remaining";
+  chargingTimeRef.innerText = "0 hr and 2 min remaining";
 }
 
 updateLevelInfo(56);
@@ -25,8 +25,4 @@ socket.addEventListener("message", (event) => {
   // console.log(value);
   updateLevelInfo(value);
 });
-
-
-
-
 

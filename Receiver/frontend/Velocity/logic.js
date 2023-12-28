@@ -4,6 +4,8 @@
     // this function is strict...
 }());
 
+
+
 var iCurrentSpeed = 20,
     iTargetSpeed = 20,
     bDecrement = null,
@@ -274,7 +276,7 @@ function drawTextMarkers(options) {
         innerTickY = 0,
         iTick = 0,
         gaugeOptions = options.gaugeOptions,
-        iTickToPrint = 00;
+        iTickToPrint = 0;
 
     applyDefaultContextSettings(options);
 

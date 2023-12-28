@@ -1,32 +1,37 @@
-body{
-    margin:0;
+body {
+    margin: 0;
+    font-family: Arial, sans-serif; /* Set a preferred font */
+    overflow: hidden;
 }
 
-/* .container{
-    display:grid;
-    height: 100vh;
-    grid-template-columns: auto  auto auto ;
-} */
-
-
-/* .D1{
-    justify-content: center;
-    align-content: center;  
-    margin-right: 0px;
+.container {
+    display: grid;
+    grid-template-columns:repeat(auto-fit, minmax(250px, 1fr)); /*Responsive grid columns */
+     gap: 20px; /*Gap between grid items */
+    padding: 20px;/* Add some padding to the container */
     background-color: #000;
-    width:100%;
-    height:100%;
 
-} */
+}
 
-.D1{
-    /* background-color: magenta; */
-     display: grid; 
+.D1 {
+    display: flex;
     justify-content: center;
-    align-content: center;  
-    margin-right: 0px;
-     background-color: #000;
-     width:500px;
-     height:500px;
+    align-items: center;
+    background-color: #000;
+    width: 100%; /* Occupy full width of its container */
+    height: 0;
+    padding-top: 30%; /* Maintain a square aspect ratio */
+    padding-bottom: 40%; /* Maintain a square aspect ratio */
+    position: relative;
+}
 
- }
+/* Content within .D1 (adjust styles as needed) */
+.D1 iframe {
+    position: absolute;
+    width: 100vh; /* Adjust the width of the content */
+    height: 100vh; /* Adjust the height of the content */
+    max-width: 100vh; /* Ensure the content doesn't overflow */
+    max-height: 100vh; /* Ensure the content doesn't overflow */
+    border: none;
+    margin: auto; /* Center the content horizontally */
+}
