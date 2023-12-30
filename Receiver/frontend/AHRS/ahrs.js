@@ -74,7 +74,7 @@ function toggleFullScreen() {
 		console.error(`Error attempting to enable full-screen mode: ${err.message}`);
 	  });
 	} else {
-		window.location.replace('../indexatt.html'); // Redirect to welcome.html after 3 seconds
+		// window.location.replace('../indexatt.html'); // Redirect to welcome.html after 3 seconds
 	  document.exitFullscreen();
 	}
   }

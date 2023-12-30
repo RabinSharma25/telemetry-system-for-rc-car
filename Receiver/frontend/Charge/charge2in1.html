@@ -56,45 +56,49 @@
         height: 100%;
       }
     }
-    .fullscreen-overlay {
+    .iframe-overlay {
       position: absolute;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
-      background-color: rgba(0, 0, 0, 0); /* Adjust transparency as needed */
-      display: none; /* Initially hidden */
-      z-index: 999; /* Ensure it's above other content */
+      background-color: transparent;
+      display: block;
+      z-index: 2; /* Ensures it's above the iframes */
+    }
+
+    /* Iframe styles */
+    iframe {
+      z-index: 1; /* Set a lower z-index to be below the overlay */
     }
 
   </style>
 </head>
-<body>
-  <div class="fullscreen-overlay">
- 
+<body> 
   <div class="container">
     <div class="half-width half-height box">
     <iframe src="charge.html" style="width:100% ;height:100%"></iframe>
+    <div class="iframe-overlay"></div> <!-- Overlay for iframe -->
     </div>
     <div class="half-width half-height box">
       <iframe src="charge2.html" style="width:100% ;height:100%"></iframe>
+      <div class="iframe-overlay"></div> <!-- Overlay for iframe -->
     </div>
   </div>
-  </div>
 <script>
-const overlay = document.querySelector('.fullscreen-overlay');
-
-function toggleFullScreen() {
-  if (!document.fullscreenElement) {
-    document.documentElement.requestFullscreen().catch((err) => {
-      console.error(`Error attempting to enable full-screen mode: ${err.message}`);
+   document.body.addEventListener('dblclick', () => {
+      toggleFullscreen(document.documentElement);
     });
-  } else {
-    document.exitFullscreen();
-  }
-}
 
-overlay.addEventListener('dblclick', toggleFullScreen);
+    function toggleFullscreen(element) {
+      if (!document.fullscreenElement) {
+        element.requestFullscreen().catch(err => {
+          console.error(`Error attempting to enable full-screen mode: ${err.message}`);
+        });
+      } else {
+        document.exitFullscreen();
+      }
+    }
 </script>
 </body>
 </html>
