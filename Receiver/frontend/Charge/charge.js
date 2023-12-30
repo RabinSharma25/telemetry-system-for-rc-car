@@ -23,7 +23,7 @@ socket.addEventListener("message", (event) => {
   event.preventDefault(); // Prevent the default behavior
   dataArray = event.data.split(',');
   console.log(dataArray);
-  value = parseFloat(dataArray[5]);
+  value = parseFloat(dataArray[6]);
   let mappedValue = mapRange((value-6), 0, 2.4, 0, 100);
   if(mappedValue<val){
     val = mappedValue;
@@ -56,7 +56,7 @@ if (currentVoltage < minVoltageThreshold) {
 }
 
   // Calculate remaining capacity based on voltage
-  const remainingCapacity = (currentVoltage / 4.2) * batteryCapacity;
+  const remainingCapacity = (currentVoltage / 8.4) * batteryCapacity;
 
   // Calculate remaining time
   const remainingTimeHours = remainingCapacity / currentConsumption;
