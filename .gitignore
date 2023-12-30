@@ -8,4 +8,4 @@ node_modules/
 .env
 
 # ignore csv files
-.csv
+*.csv
