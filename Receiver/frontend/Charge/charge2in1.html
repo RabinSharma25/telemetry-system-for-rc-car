@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Responsive Divs</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      border: 0px;
+      /* box-sizing: border-box; */
+    }
+
+    body, html {
+      /* display: flex; */
+      height: 100%;
+      justify-content: center; /* Center horizontally */
+      align-items: center; /* Center vertically */
+      background-color: white;
+      overflow: hidden;
+    }
+
+    .container {
+      display: flex;
+      height: 100%;
+    }
+
+    .half-width {
+      width: 50%;
+    }
+
+    .half-height {
+      height: 50%;
+    }
+
+    .box {
+      border: 0px;
+    }
+
+
+    /* Responsive adjustments */
+    @media screen and (max-width: 768px) {
+      .container {
+        flex-direction: column; /* Stack divs vertically on smaller screens */
+      }
+      .half-width {
+        width: 100%;
+      }
+      .half-height {
+        height: 50%;
+      }
+    }
+
+    @media screen and (max-width: 480px) {
+      .half-height {
+        height: 100%;
+      }
+    }
+    .iframe-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: transparent;
+      display: block;
+      z-index: 2; /* Ensures it's above the iframes */
+    }
+
+    /* Iframe styles */
+    iframe {
+      z-index: 1; /* Set a lower z-index to be below the overlay */
+    }
+    div,iframe{
+    overflow: hidden;
+    }
+
+  </style>
+</head>
+<body> 
+  <div class="container">
+    <div class="half-width half-height box">
+    <iframe src="charge.html" style="width:100% ;height:100%" scrolling="no"></iframe>
+    <div class="iframe-overlay"></div> <!-- Overlay for iframe -->
+    </div>
+    <div class="half-width half-height box">
+      <iframe src="charge2.html" style="width:100% ;height:100%" scrolling="no"></iframe>
+      <div class="iframe-overlay"></div> <!-- Overlay for iframe -->
+    </div>
+  </div>
+<script>
+   document.body.addEventListener('dblclick', () => {
+      toggleFullscreen(document.documentElement);
+    });
+
+    function toggleFullscreen(element) {
+      if (!document.fullscreenElement) {
+        element.requestFullscreen().catch(err => {
+          console.error(`Error attempting to enable full-screen mode: ${err.message}`);
+        });
+      } else {
+        document.exitFullscreen();
+      }
+    }
+</script>
+</body>
+</html>

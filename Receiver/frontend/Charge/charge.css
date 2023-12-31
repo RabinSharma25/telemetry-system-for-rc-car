@@ -1,66 +1,79 @@
+html,body{
+  background-color: white;
+}
 * {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
   font-family: "Roboto Mono", monospace;
 }
+
 .container {
   position: absolute;
   transform: translate(-50%, -50%);
-  top: 50%; 
+  top: 50%;
   left: 50%;
-  /* width: 300px;
-  height: 300px;  */
 }
+
 #battery {
   box-sizing: content-box;
-  height: 7.8em;
-  width: 17.5em;
-  border: 0.6em solid #246aed;
+  height: 10vw; /* Responsive height based on viewport width */
+  width: 22vw; /* Responsive width based on viewport width */
+  border: 0.6vw solid #246aed; /* Responsive border based on viewport width */
   margin: auto;
-  border-radius: 0.6em;
+  border-radius: 0.6vw; /* Responsive border radius based on viewport width */
   position: relative;
   display: grid;
   place-items: center;
 }
+
 #battery:before {
   position: absolute;
   content: "";
-  height: 5em;
-  width: 1.1em;
-  background-color:rgb(20,50,90);
+  height: 6vw; /* Responsive height based on viewport width */
+  width: 1.1vw; /* Responsive width based on viewport width */
+  background-color: rgb(20, 50, 90);
   margin: auto;
   top: 0;
   bottom: 0;
-  right: -1.6em;
-  border-radius: 0 0.3em 0.3em 0;
+  right: -1.6vw; /* Responsive right positioning based on viewport width */
+  border-radius: 0 0.3vw 0.3vw 0; /* Responsive border radius based on viewport width */
 }
+
 #charge {
   position: absolute;
-  height: 6.5em;
-  width: 16.25em;
+  height: 8.5vw; /* Responsive height based on viewport width */
+  width: 21.25vw; /* Responsive width based on viewport width */
   background-color: #246aed;
-  top: 0.6em;
-  left: 0.6em;
+  top: 0.6vw; /* Responsive top positioning based on viewport width */
+  left: 0.6vw; /* Responsive left positioning based on viewport width */
 }
+
 #charge-level {
   position: absolute;
-  font-size: 3em;
+  font-size: 3vw; /* Responsive font size based on viewport width */
   font-weight: 500;
 }
+
 #charging-time {
   text-align: center;
-  font-size: 1.7em;
-  margin-top: 1.4em;
+  font-size: 1.7vw; /* Responsive font size based on viewport width */
+  margin-top: 1.4vw; /* Responsive margin based on viewport width */
 }
-/* .active {
-  animation: charge-animation 3s infinite linear;
-} */
-/* @keyframes charge-animation {
-  0% {
-    width: 0;
-  }
-  100% {
-    width: 16.25em;
-  }
-} */
+
+h5 {
+  margin-bottom: 2.7vw; /* Responsive margin based on viewport width */
+  justify-content: center;
+  text-align: center;
+}
+
+
+/* Media queries for finer adjustments at different screen sizes if needed */
+@media screen and (max-width: 768px) {
+  /* Adjust styles for smaller screens if necessary */
+}
+
+@media screen and (max-width: 480px) {
+  /* Further adjustments for even smaller screens if needed */
+}
+
