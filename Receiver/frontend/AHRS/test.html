@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Three.js Compass</title>
+    <style>
+        body { margin: 0; }
+    </style>
+</head>
+<body>
+    <script type="module">
+        import * as THREE from 'https://threejs.org/build/three.module.js';
+
+        let camera, scene, renderer;
+        let compassGroup;
+
+        init();
+        animate();
+
+        function init() {
+            // Create scene
+            scene = new THREE.Scene();
+
+            // Create camera
+            camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+            camera.position.set(0, 0, 5);
+
+            // Create compass group
+            compassGroup = new THREE.Group();
+            scene.add(compassGroup);
+
+            // Create compass components
+            createCompass();
+
+            // Create renderer
+            renderer = new THREE.WebGLRenderer();
+            renderer.setSize(window.innerWidth, window.innerHeight);
+            document.body.appendChild(renderer.domElement);
+
+            // Handle window resize
+            window.addEventListener('resize', onWindowResize);
+
+            // Handle mouse movement
+            document.addEventListener('mousemove', onDocumentMouseMove);
+        }
+
+        function createCompass() {
+            const arrowLength = 2;
+            const arrowColor = 0x00ff00;
+
+            // Create arrow pointing in the positive Y direction
+            const arrowGeometry = new THREE.CylinderGeometry(0, 0.1, arrowLength, 32);
+            const arrowMaterial = new THREE.MeshBasicMaterial({ color: arrowColor });
+            const arrow = new THREE.Mesh(arrowGeometry, arrowMaterial);
+            compassGroup.add(arrow);
+
+            // Create a sphere at the tip of the arrow
+            const sphereGeometry = new THREE.SphereGeometry(0.15);
+            const sphereMaterial = new THREE.MeshBasicMaterial({ color: arrowColor });
+            const sphere = new THREE.Mesh(sphereGeometry, sphereMaterial);
+            sphere.position.set(0, arrowLength / 2, 0);
+            compassGroup.add(sphere);
+
+            // Add labels for cardinal directions
+            addDirectionLabel("N", 0, arrowLength / 2 + 0.5, 0);
+            addDirectionLabel("S", 0, -arrowLength / 2 - 0.5, 0);
+            addDirectionLabel("E", arrowLength / 2 + 0.5, 0, 0);
+            addDirectionLabel("W", -arrowLength / 2 - 0.5, 0, 0);
+        }
+
+        function addDirectionLabel(text, x, y, z) {
+            const loader = new THREE.FontLoader();
+            loader.load('https://threejs.org/examples/fonts/helvetiker_regular.typeface.json', function (font) {
+                const labelGeometry = new THREE.TextGeometry(text, {
+                    font: font,
+                    size: 0.2,
+                    height: 0.02,
+                });
+
+                const labelMaterial = new THREE.MeshBasicMaterial({ color: 0xffffff });
+                const labelMesh = new THREE.Mesh(labelGeometry, labelMaterial);
+                labelMesh.position.set(x, y, z);
+                compassGroup.add(labelMesh);
+            });
+        }
+
+        function onWindowResize() {
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(window.innerWidth, window.innerHeight);
+        }
+
+        function onDocumentMouseMove(event) {
+            // Normalize mouse coordinates
+            const mouseX = (event.clientX / window.innerWidth) * 2 - 1;
+            const mouseY = -(event.clientY / window.innerHeight) * 2 + 1;
+
+            // Update compass rotation based on mouse coordinates
+            compassGroup.rotation.set(mouseY, mouseX, 0);
+        }
+
+        function animate() {
+            requestAnimationFrame(animate);
+
+            // Render the scene
+            renderer.render(scene, camera);
+        }
+    </script>
+</body>
+</html>
