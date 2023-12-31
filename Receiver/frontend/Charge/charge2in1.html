@@ -71,17 +71,20 @@
     iframe {
       z-index: 1; /* Set a lower z-index to be below the overlay */
     }
+    div,iframe{
+    overflow: hidden;
+    }
 
   </style>
 </head>
 <body> 
   <div class="container">
     <div class="half-width half-height box">
-    <iframe src="charge.html" style="width:100% ;height:100%"></iframe>
+    <iframe src="charge.html" style="width:100% ;height:100%" scrolling="no"></iframe>
     <div class="iframe-overlay"></div> <!-- Overlay for iframe -->
     </div>
     <div class="half-width half-height box">
-      <iframe src="charge2.html" style="width:100% ;height:100%"></iframe>
+      <iframe src="charge2.html" style="width:100% ;height:100%" scrolling="no"></iframe>
       <div class="iframe-overlay"></div> <!-- Overlay for iframe -->
     </div>
   </div>
