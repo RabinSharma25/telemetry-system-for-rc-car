@@ -34,8 +34,8 @@ renderer.setSize(w, h, false);
 scene3d.appendChild(renderer.domElement);
 
 const euler = new THREE.Euler(pitch, yaw, roll);
-const carGeometry = new THREE.BoxGeometry(3, 0.5, 1.7);
-const wheelGeometry = new THREE.SphereGeometry(0.4, 20, 20);
+const carGeometry = new THREE.BoxGeometry(3, 0.5, 1.7,40,40,40);
+const wheelGeometry = new THREE.SphereGeometry(0.4, 40, 40);
 
 // Different colors for each side of the car
 const carMaterials = [
@@ -49,11 +49,12 @@ const carMaterials = [
 
 // Different colors for each wheel
 const wheelMaterials = [
-    new THREE.MeshBasicMaterial({ color: 0x333333 }), // Front left wheel
-    new THREE.MeshBasicMaterial({ color: 0x666666 }), // Front right wheel
-    new THREE.MeshBasicMaterial({ color: 0x999999 }), // Rear left wheel
-    new THREE.MeshBasicMaterial({ color: 0xcccccc })  // Rear right wheel
+    new THREE.MeshBasicMaterial({ color: 0xFF69B4 }), // Pinkish color
+    new THREE.MeshBasicMaterial({ color: 0x00BFFF }), // Sky Blue color
+    new THREE.MeshBasicMaterial({ color: 0xFF69B4 }), // Pinkish color
+    new THREE.MeshBasicMaterial({ color: 0x00BFFF })  // Sky Blue color
 ];
+
 
 // Create a multi-material object for the car
 const carMesh = new THREE.Mesh(carGeometry, carMaterials);
