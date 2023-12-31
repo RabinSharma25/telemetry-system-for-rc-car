@@ -1,0 +1,29 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+#header {
+    text-align: center;
+    font-size:20px;
+    /* color: orangered; */
+    font-weight: bold;
+   background: linear-gradient(to right, #8d0b0b, #da1b60);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    display: block;        }
+#container {
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-size:40;
+    /* color: orangered; */
+    font-weight: bold;
+   background: linear-gradient(to right, #ff8a00, #da1b60);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    display: block; /* Ensures the gradient applies to text */
+}

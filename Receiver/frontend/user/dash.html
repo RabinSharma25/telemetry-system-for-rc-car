@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Card Hover Effect</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="Styles/dashstyle.css" rel="stylesheet">
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
+        integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@10">
+</head>
+
+<body>
+  <nav class="navbar navbar-dark bg-dark">
+    <!-- Navbar content -->
+  </nav>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#">Telemetry for RC Car</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="#">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="about.html">About</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="contatcus.html">Contact Us</a>
+            </ul>
+            <!-- <span class="navbar-text"> -->
+              <button class="nav-link" id="logout">Log Out</button>
+            <!-- </span> -->
+        </div>
+    </div>
+</nav>
+
+
+
+<div class="background"></div>
+<div class="container-fluid mt-5">
+  <div class="row justify-content-center">
+      <div class="col-lg-4 col-md-6 col-sm-12 mb-4 margin">
+          <div class="card" style="border: none; background-color: rgba(0, 0, 0, 0)!important;">
+              <!-- ... Card content ... -->
+              <div class="container d-flex justify-content-center" style="background-color: rgba(0, 0, 0, 0)!important;">
+                <div class="card" style="border: none; background-color: rgba(0, 0, 0, 0)!important;">
+                      <div class="slide slide1">
+                          <div class="content">
+                              <div class="icon">
+                               <a href="../indexfull.html"> <video autoplay muted loop>
+                                  <source src="Assets/1.mp4" type="video/mp4">
+                                  Your browser does not support the video tag.
+                              </video>
+                            </a>
+                              </div>
+                          </div>
+                      </div>
+                      <div class="slide slide2">
+                          <div class="content">
+                              <h3>Telemetry Visualization</h3>
+                              <p>With the help of CSS, HTML and JavaScript, this section visualizes various properties related to the
+                                  vehicle namely, Velocity, Temperature, Orientation, GPS Location and Battery Percentage of the
+                                  batteries in the vehicle.</p>
+                          </div>
+                      </div>
+                  </div>
+                </div>
+          
+          </div>
+      </div>
+      <div class="col-lg-4 col-md-6 col-sm-12 mb-4 margin">
+          <div class="card" style="border: none; background-color: rgba(0, 0, 0, 0)!important;">
+              <!-- ... Card content ... -->
+                 <div class="container d-flex justify-content-center" style="border: none; background-color: rgba(0, 0, 0, 0)!important;">
+        <div class="card" style="border: none; background-color: rgba(0, 0, 0, 0)!important;">
+          <div class="slide slide1">
+              <div class="content">
+                  <div class="icon">
+                    <a href="index.html"> <video autoplay muted loop>
+                      <source src="Assets/2.mp4" type="video/mp4">
+                      Your browser does not support the video tag.
+                  </video>
+                </a>
+                  </div>
+              </div>
+          </div>
+          <div class="slide slide2">
+              <div class="content">
+                  <h3>Live Graphs</h3>
+                  <p>With the help of CSS, HTML, JavaScript and Python Libraries, this section displays the data in the form of live graphs using various technologies.</p>
+              </div>
+          </div>
+      </div>
+    </div>
+
+          </div>
+      </div>
+  </div>
+</div>
+</div>
+
+
+    <!-- card -->
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+        <script src="Scripts/logout.js"></script>
+
+
+      
+</body>
+
+</html>

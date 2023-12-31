@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<head>
+  <title>Regiter With Us</title>
+  <link rel="stylesheet" type="text/css" href="Styles/style.css">
+ 
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@10">
+</head>
+<body>
+  <div id="main">
+    <div class="h-tag">
+      <h2>Register Here!</h2>
+  <form id="myForm">
+  </div>
+  <div class="login">
+    <table cellspacing="2" align="center" cellpadding="8" border="0">
+      <tr>
+
+
+
+    <td><label for="firstName">First Name:</label></td>
+    <td><input type="text" placeholder="Enter Full Name here" id="firstName" name="firstName"></td>
+    </tr>
+    <tr>
+    <td><label for="lastName">Last Name:</label></td>
+   <td> <input type="text" placeholder="Enter Last Name here" id="lastName" name="lastName"></td>
+  </tr>
+  <tr>
+   <td><label for="email">Email:</label></td>
+    <td><input type="text" placeholder="Enter Email ID here" id="email" name="email"><br></td>
+  </tr>
+  <tr>
+    <td><label for="password">Password:</label></td>
+ <td><input type="password" placeholder="Enter Password here" id="password" name="password"></td>
+  </tr>
+  </table>
+    <input type="submit" value="Create Account" class="btn">
+  </form>
+  </div></div>
+
+  <script>
+    // Function to handle form submission
+    function submitForm(event) {
+      event.preventDefault(); // Prevent the default form submission
+  
+      var formData = new FormData(document.getElementById("myForm"));
+     
+      var jsonObject = {
+    firstName: formData.get('firstName'),
+    lastName: formData.get('lastName'),
+    email: formData.get('email'),
+    password: formData.get('password')
+  };
+  var fullJSON = JSON.stringify(jsonObject, null, 2); // Convert the object to full JSON format
+  console.log(fullJSON); // Output the full JSON string to console
+
+
+      fetch('http://localhost:3000/api/register/register', {
+        method: 'POST',
+        headers: {
+    'Content-Type': 'application/json', 'Content-Length': `${fullJSON.length}`},
+        body: fullJSON
+      })
+      .then(response => {
+            if (response.ok) {
+       console.log('Registeration successfully!');
+         Swal.fire({
+          icon: 'success',
+          title: 'Registeration Successful',
+          text: 'Redirecting to Login Page.'
+        });
+       setTimeout(() => {
+        window.location.replace('login.html'); // Redirect to welcome.html after 3 seconds
+      }, 2000);
+        } else {
+          console.log('Form submission failed!');
+        }
+      })
+      .catch(error => {
+        console.error('Error:', error);
+      });
+    }
+  
+    // Event listener for form submission
+    document.getElementById("myForm").addEventListener("submit", submitForm);
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+
+</body>
+</html>
