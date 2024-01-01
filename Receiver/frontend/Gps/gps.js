@@ -54,21 +54,3 @@ socket.addEventListener("message", async (mess) => {
 		}
 	}
 });
-
-
-var iframe = document.getElementById('toggle');
-var button = document.getElementById('button');
-
-button.addEventListener('click', function() {
-  if (iframe.style.pointerEvents === 'none') {
-	iframe.style.pointerEvents = 'all';
-  } else {
-	iframe.style.pointerEvents = 'none';
-  }
-});
-
-
-
-
-
-

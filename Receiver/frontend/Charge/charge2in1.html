@@ -1,5 +1,6 @@
-<!-- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <title>Responsive Divs</title>
@@ -11,11 +12,14 @@
       /* box-sizing: border-box; */
     }
 
-    body, html {
+    body,
+    html {
       /* display: flex; */
       height: 100%;
-      justify-content: center; /* Center horizontally */
-      align-items: center; /* Center vertically */
+      justify-content: center;
+      /* Center horizontally */
+      align-items: center;
+      /* Center vertically */
       background-color: white;
       overflow: hidden;
     }
@@ -41,11 +45,14 @@
     /* Responsive adjustments */
     @media screen and (max-width: 768px) {
       .container {
-        flex-direction: column; /* Stack divs vertically on smaller screens */
+        flex-direction: column;
+        /* Stack divs vertically on smaller screens */
       }
+
       .half-width {
         width: 100%;
       }
+
       .half-height {
         height: 50%;
       }
@@ -56,6 +63,7 @@
         height: 100%;
       }
     }
+
     .iframe-overlay {
       position: absolute;
       top: 0;
@@ -64,32 +72,36 @@
       height: 100%;
       background-color: transparent;
       display: block;
-      z-index: 2; /* Ensures it's above the iframes */
+      z-index: 2;
+      /* Ensures it's above the iframes */
     }
 
     /* Iframe styles */
     iframe {
-      z-index: 1; /* Set a lower z-index to be below the overlay */
-    }
-    div,iframe{
-    overflow: hidden;
+      z-index: 1;
+      /* Set a lower z-index to be below the overlay */
     }
 
+    div,
+    iframe {
+      overflow: hidden;
+    }
   </style>
 </head>
-<body> 
+
+<body>
   <div class="container">
     <div class="half-width half-height box">
-    <iframe src="charge.html" style="width:100% ;height:100%" scrolling="no"></iframe>
-    <div class="iframe-overlay"></div> <!-- Overlay for iframe -->
+      <iframe src="chargeRC.html" style="width:100% ;height:100%" scrolling="no"></iframe>
+      <div class="iframe-overlay"></div>
     </div>
     <div class="half-width half-height box">
       <iframe src="chargeTelemetry.html" style="width:100% ;height:100%" scrolling="no"></iframe>
-      <div class="iframe-overlay"></div> <!-- Overlay for iframe -->
+      <div class="iframe-overlay"></div>
     </div>
   </div>
-<script>
-   document.body.addEventListener('dblclick', () => {
+  <script>
+    document.body.addEventListener('dblclick', () => {
       toggleFullscreen(document.documentElement);
     });
 
@@ -102,6 +114,7 @@
         document.exitFullscreen();
       }
     }
-</script>
+  </script>
 </body>
+
 </html> -->
