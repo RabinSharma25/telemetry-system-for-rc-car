@@ -1,0 +1,77 @@
+body, html {
+    height: 100%;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+    width: 60%; /* Reduce the width by 20% */
+    height: 60%; /* Reduce the height by 20% */
+  }
+
+  .gauge {
+    width: 64vw; /* Adjusted width by 20% */
+    max-width: 240px; /* Adjusted max-width by 20% */
+    height: calc(64vw + 32px); /* Adjusted height by 20% */
+    max-height: 240px; /* Adjusted max-height by 20% */
+    border-radius: 50%;
+    border: calc(0.2 * 64vw) solid #99868688; /* Adjusted border by 20% */
+    background: linear-gradient(to right, #767676, #969696);
+    box-shadow: inset 0 0 0 0.4rem #565656, 0.42rem 0.84rem 0.8rem rgba(168, 84, 200, 0.76); /* Adjusted box shadow by 20% */
+    position: relative;
+    overflow: hidden;
+  }
+
+  .fill {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    clip: rect(0, 64vw, 64vw, 32px); /* Adjusted clip path by 20% */
+    background: radial-gradient(at center, var(--ice-color) var(--ice-level), var(--moderate-color) var(--moderate-level), var(--fire-color) var(--fire-level));
+    transform-origin: center;
+    transform: rotate(calc(var(--rotate, -90deg)));
+    transition: transform 0.5s ease-in-out;
+    animation: pulseAnimation 2s infinite alternate ease-in-out;
+  }
+
+  .text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: calc(8px + 2.4vw); /* Adjusted font size by 20% */
+    font-weight: bold;
+    color: #333;
+    font-family: Arial, sans-serif;
+  }
+
+  @keyframes pulseAnimation {
+    0% {
+      transform: scale(0.9);
+    }
+    100% {
+      transform: scale(1.1);
+    }
+  }
+
+  /* Additional responsive styles */
+  @media (max-width: 768px) {
+    .gauge {
+      width: 72vw; /* Adjusted width for smaller screens */
+      height: calc(72vw + 32px); /* Adjusted height for smaller screens */
+      border-width: calc(0.2 * 72vw); /* Adjusted border for smaller screens */
+      clip: rect(0, 72vw, 72vw, 32px); /* Adjusted clip path for smaller screens */
+    }
+
+    .text {
+      font-size: calc(8px + 1.6vw); /* Adjusted font size for smaller screens */
+    }
+  }
