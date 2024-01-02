@@ -42,3 +42,4 @@ const temperature = 29; // Change this value only
       fill.style.setProperty('--rotate', rotation + 'deg');
     }
     
+    
