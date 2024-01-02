@@ -125,7 +125,7 @@ function onWindowResize() {
     camera.aspect = newWidth / newHeight;
     camera.updateProjectionMatrix();
 
-    renderer.setSize(newWidth, newHeight);
+    renderer.setSize(newWidth-300, newHeight-300);
 }
 
 window.addEventListener('resize', onWindowResize);
