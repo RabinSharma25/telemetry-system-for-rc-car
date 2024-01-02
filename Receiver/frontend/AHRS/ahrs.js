@@ -118,7 +118,17 @@ scene3d.addEventListener('click', (event) => {
 });
 
 // ... (previous code)
+function onWindowResize() {
+    const newWidth = scene3d.offsetWidth;
+    const newHeight = scene3d.offsetHeight;
 
+    camera.aspect = newWidth / newHeight;
+    camera.updateProjectionMatrix();
+
+    renderer.setSize(newWidth, newHeight);
+}
+
+window.addEventListener('resize', onWindowResize);
 
 
 animate();
