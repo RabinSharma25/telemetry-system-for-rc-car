@@ -59,9 +59,9 @@ def save_model_to_onnx(joblib_model_path, onnx_model_path, X_train):
 
     # Specify the input type (you may need to adjust this based on your model's input type)
     initial_type = [('float_input', FloatTensorType([None, X_train.shape[1]]))]
-
+    options = {'zipmap': False}# enables getting probabilities in Node.
     # Convert the model to ONNX format
-    onnx_model = convert_sklearn(loaded_model, initial_types=initial_type)
+    onnx_model = convert_sklearn(loaded_model, initial_types=initial_type, options=options)
 
     # Save the ONNX model to a file
     onnx.save_model(onnx_model, onnx_model_path)
