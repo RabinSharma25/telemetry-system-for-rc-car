@@ -126,7 +126,7 @@
     const iframes = document.querySelectorAll('iframe');
     iframes.forEach(iframe => {
       if (isFullscreen) {
-        const scaleFactorFullscreen = window.innerWidth / 700; // Adjust the reference width for fullscreen as needed
+        const scaleFactorFullscreen = window.innerWidth / 610; // Adjust the reference width for fullscreen as needed
         iframe.style.transform = `scale(${scaleFactorFullscreen})`;
         iframe.style.marginTop = '20px'; // Add margin-top in fullscreen
       } else {
