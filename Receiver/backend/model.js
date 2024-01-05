@@ -30,10 +30,9 @@ async function runInference(modelPath, inputData, inputShape) {
 const modelPath = '/home/rabin-sharma/Documents/Github/Mini-Project/Receiver/backend/src/ML-Model/onnx_model.onnx';
 const inputShape = [1, 9]; // Shape for a 1D tensor with 1 row and 9 columns
 
-const inputData = Float32Array.from([0.10,6.14,-1,0.00,1,1.55,9.11,21,0]);
+const inputData = Float32Array.from([0.10,6.14,15,0.00,1,1.55,7,11,21])
 
 runInference(modelPath, inputData,inputShape);
-
 // const { InferenceSession } = require('onnxruntime-node');
 
 // async function getInOutNames(modelPath) {
