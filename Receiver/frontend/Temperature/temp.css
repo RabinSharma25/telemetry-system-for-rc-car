@@ -4,6 +4,7 @@ body, html {
     display: flex;
     justify-content: center;
     align-items: center;
+    background-color: white;
   }
 
   .container {
@@ -74,3 +75,7 @@ body, html {
       font-size: calc(8px + 1.6vw); /* Adjusted font size for smaller screens */
     }
   }
+
+
+
+  
