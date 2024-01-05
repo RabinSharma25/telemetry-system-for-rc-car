@@ -23,7 +23,6 @@ body, html {
     max-height: 240px; /* Adjusted max-height by 20% */
     border-radius: 50%;
     border: calc(0.2 * 64vw) solid #99868688; /* Adjusted border by 20% */
-    background: linear-gradient(to right, #767676, #969696);
     box-shadow: inset 0 0 0 0.4rem #565656, 0.42rem 0.84rem 0.8rem rgba(168, 84, 200, 0.76); /* Adjusted box shadow by 20% */
     position: relative;
     overflow: hidden;

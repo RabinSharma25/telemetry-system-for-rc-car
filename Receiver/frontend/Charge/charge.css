@@ -1,5 +1,6 @@
 html,body{
   background-color: white;
+
 }
 * {
   padding: 0;
@@ -62,7 +63,7 @@ html,body{
 }
 
 h5 {
-  margin-bottom: 2.7vw; /* Responsive margin based on viewport width */
+  margin-bottom: 1vw; /* Responsive margin based on viewport width */
   justify-content: center;
   text-align: center;
 }

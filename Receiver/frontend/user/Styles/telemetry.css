@@ -1,6 +1,5 @@
 div:hover {
     border: 50px; /* Change the margin on hover */
-    background-color: lightgray; /* Change background color on hover */
 }
 div{
 display: flex;

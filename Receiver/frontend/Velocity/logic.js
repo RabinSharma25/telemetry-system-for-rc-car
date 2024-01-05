@@ -558,4 +558,21 @@ function draw() {
  
     //}
 //}
+function scaleContent() {
+    const content = document.querySelector('.content');
+    const scaled = document.querySelector('.scaled');
+
+    const scaleX = window.innerWidth / scaled.offsetWidth;
+    const scaleY = window.innerHeight / scaled.offsetHeight;
+
+    const scale = Math.min(scaleX-0.2, scaleY-0.2);
+
+    scaled.style.transform = `scale(${scale})`;
+    content.style.width = `${scaled.offsetWidth * scale}px`;
+    content.style.height = `${scaled.offsetHeight * scale}px`;
+  }
+
+  // Call scaleContent initially and on window resize
+  window.onload = scaleContent;
+  window.onresize = scaleContent;
 
