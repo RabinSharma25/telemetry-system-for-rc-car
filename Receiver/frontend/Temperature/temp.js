@@ -1,45 +1,34 @@
-const temperature = 29; // Change this value only
-    updateGauge(temperature);
+  const socket = new WebSocket("ws://localhost:3000");
 
-    function updateGauge(temperature) {
-      const fill = document.querySelector('.fill');
-      const text = document.querySelector('.text');
+socket.addEventListener("message", (event) => {
+  event.preventDefault(); // Prevent the default behavior
+  dataArray = event.data.split(',');
+  console.log(dataArray);
+  value = parseFloat(dataArray[7]);
+  updateValue(value);
+});
 
-      // Update text content
-      text.textContent = temperature + '°C';
+function updateValue(value) {
+  const displayValue = document.getElementById('displayValue');
+  displayValue.textContent = value;
 
-      // Calculate fill levels based on temperature
-      let iceLevel = 0;
-      let moderateLevel = 0;
-      let fireLevel = 0;
+  const icon = document.getElementById('icon');
+  let iconPath = '';
 
-      if (temperature <= 0) {
-        iceLevel = 100;
-      } else if (temperature <= 25) {
-        moderateLevel = (temperature / 25) * 100;
-      } else {
-        moderateLevel = 100;
-        fireLevel = ((temperature - 25) / 25) * 100;
-      }
-
-      // Update gradient levels based on temperature
-      fill.style.setProperty('--ice-level', iceLevel + '%');
-      fill.style.setProperty('--moderate-level', moderateLevel + '%');
-      fill.style.setProperty('--fire-level', fireLevel + '%');
-      
-      // Define colors for different temperature ranges
-      const iceColor = '#B6B6B6'; // Ice color
-      const moderateColor = '#D7D7D7'; // Moderate color
-      const fireColor = '#ff7e5f'; // Fire color
-      
-      // Update colors based on temperature
-      fill.style.setProperty('--ice-color', iceColor);
-      fill.style.setProperty('--moderate-color', moderateColor);
-      fill.style.setProperty('--fire-color', fireColor);
-      
-      // Rotate the gauge based on temperature (optional)
-      const rotation = temperature <= 25 ? -90 + (temperature * 2) : 0;
-      fill.style.setProperty('--rotate', rotation + 'deg');
-    }
-    
-    
+  if (value >= -45 && value <= 4) {
+    iconPath = '../user/Assets/01.png'; // Replace with your icon path for this range
+  } else if (value >= 6 && value <= 14) {
+    iconPath = '../user/Assets/02.png'; // Replace with your icon path for this range
+  } else if (value >= 15 && value <= 24) {
+    iconPath = '../user/Assets/03.png'; // Replace with your icon path for this range
+  } else if (value >= 25 && value <= 34) {
+    iconPath = '../user/Assets/04.png'; // Replace with your icon path for this range
+  } else if (value >= 35 && value <= 44) {
+    iconPath = '../user/Assets/05.png'; // Replace with your icon path for this range
+  } else if (value >= 45 && value <= 55) {
+    iconPath = '../user/Assets/06.png'; // Replace with your icon path for this range
+  }else if (value >= 56) {
+    iconPath = '../user/Assets/07.png'; // Replace with your icon path for this range
+  }
+  icon.src = iconPath;
+}
