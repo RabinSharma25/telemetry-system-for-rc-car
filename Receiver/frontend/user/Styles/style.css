@@ -1,42 +1,100 @@
 body {
-    display: flex auto;
+    display: flex;
+    flex-direction: column; /* Elements will stack vertically */
     margin: 0px;
-    color: #f9fcf5;
+    /* color: #f9fcf5; */
     font-family: Arial, Helvetica, sans-serif;
-    background-image: url("../Assets/oo.jpg");
-    background-size: 100%;
+    background-size: 100vh;
     width: 100%;
     height: 100%;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
 }
+
+.video-background {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    overflow: hidden;
+  }
+  
+  .video-background video {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    z-index: -1000;
+  }
+  
 
 #head {
     margin: 30 80 80 80;
 }
 
-#signin {
-    background-image: linear-gradient(-225deg,
-            #bbc8f3 30%,
-            #44107a 29%,
-            #a807a0 67%,
-            #910747 100%);
-    background-size: auto auto;
-    background-clip: border-box;
-    background-size: 200% auto;
-    color: #fff;
-    background-clip: text;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    animation: textclip 2s linear infinite;
-    font-size: 50px;
-    font-style: bold;
-
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    text-align: center;
-    text-indent: 4px;
+#main #signin {
+    width: 150px;
+    height: 32px;
+    outline: none;
+    color: #f7f7f7;
+    font-weight: bold;
+    border: 0px solid #f26724;
+    text-shadow: 0px 0.5px 0.5px #fff;
+    border-radius: 2px;
+    font-weight: 600;
+    color: #f26724;
+    letter-spacing: 1px;
+    font-size: 14px;
+    background-color: #f1f1f1;
+    -webkit-transition: 1s;
+    -moz-transition: 1s;
+    transition: 1s;
 }
+
+#main #goregister {
+
+    outline: none;
+    color: #f7f7f7;
+    font-weight: bold;
+    border: 0px solid #f26724;
+    text-shadow: 0px 0.5px 0.5px #fff;
+    border-radius: 2px;
+    font-weight: 600;
+    color: #1c6ca1;
+    letter-spacing: 1px;
+    font-size: 14px;
+    background-color: #f1f1f1;
+    -webkit-transition: 1s;
+    -moz-transition: 1s;
+    transition: 1s;
+}
+
+#main #signin:hover {
+    background: rgb(2, 0, 36);
+    outline: none;
+    color: white;
+    -webkit-transition: 0.5s;
+    -moz-transition: 0.8s;
+    transition: 0.7s;
+}
+
+#main #goregister:hover {
+    background: rgb(20, 3, 66);
+    outline: none;
+    color: white;
+    -webkit-transition: 0.5s;
+    -moz-transition: 0.8s;
+    transition: 0.7s;
+} 
 
 #main {
     width: 600px;
@@ -60,18 +118,19 @@ body {
 
 /* css code for textbox */
 #main .tb {
-    height: 28px;
-    width: 230px;
+    text-align: left;
+    height: 25px;
+    width: 50vw;
     border: 1px solid #f26724;
     color: #fd7838;
     font-weight: bold;
-    border-left: 5px solid #f7f7f7;
+    border-left: 2px solid #f7f7f7;
     opacity: 0.9;
 }
 
 #main .tb:focus {
     height: 28px;
-    border: 1px solid darkslategrey;
+    border: 3px solid darkslategrey;
     outline: none;
     border-left: 4px solid darkslategrey;
     border-right: 4px solid darkslategrey;
@@ -81,22 +140,26 @@ body {
 
 /* css code for button*/
 #main .btn {
-    width: 150px;
-    height: 32px;
+    margin-bottom: 3vh;
+    width: 100%;
+    height: 5vh;
     outline: none;
     color: #f7f7f7;
     font-weight: bold;
     border: 0px solid #f26724;
-    text-shadow: 0px 0.5px 0.5px #fff;
+    text-shadow: 0px 0.5vw 0.5vw #fff;
     border-radius: 2px;
     font-weight: 600;
     color: #f26724;
     letter-spacing: 1px;
-    font-size: 14px;
+    font-size: 2vw;
     background-color: #f1f1f1;
     -webkit-transition: 1s;
     -moz-transition: 1s;
     transition: 1s;
+    padding: 2vw;
+    box-sizing: border-box;
+
 }
 
 #main .btn:hover {
@@ -112,7 +175,7 @@ body {
 
 
 .land {
-    background-image: url("../Assets/back2.jpg");
+    /* background-image: url("../Assets/back2.jpg"); */
 }
 
 .login {
@@ -141,4 +204,46 @@ body {
     to {
         background-position: 200% center;
     }
+}
+.h-tag{
+    text-align: center;
+    color: white;
+    font-family: 'Roboto', sans-serif; /* Setting the font family */
+font-size: x-large;
+}
+
+h4{
+    text-align: center;
+    color: white;
+    font-family: 'Roboto', sans-serif; /* Setting the font family */
+    margin: 0px;
+    font-weight: bolder;
+}
+
+img{
+    height:13vw;
+    width: 40vw;
+    margin: auto;
+    align-self: center;
+    max-width: 100%; /* Ensure image doesn't exceed container width */
+    margin-left: 30vw; /* Adjust margin as needed */
+}
+td{
+    width: 3vw;
+    height: 3vw;
+}
+
+@media screen and (max-width: 768px) {
+    #main {
+      width: 95%;
+      padding: 10px;
+    }
+    .h-tag {
+      font-size: 4vw; /* Adjust font size for smaller screens */
+    }
+  }
+
+  tr{
+   padding: 0px;
+   margin: 0px;
 }

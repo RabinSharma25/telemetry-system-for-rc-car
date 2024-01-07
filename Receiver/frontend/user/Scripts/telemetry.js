@@ -30,3 +30,9 @@ const scaledDiv = document.querySelector('.scaledDiv');
 // // Call the function to scale down on page load
 // scaleContents();
 
+
+
+
+// velocity fullscreen
+
+
