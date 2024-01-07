@@ -13,6 +13,7 @@
   font-size: 12vw; /* Font size for the degree symbol */
 }
 #heading {
+  font-family: 'Times New Roman', Times, serif;
     margin-top: 1vh;
   font-size: 4vw; /* Font size for the degree symbol */
   position: fixed; /* Fix the heading position */
@@ -20,6 +21,8 @@
   left: 50%; /* Center the heading horizontally */
   transform: translateX(-50%); /* Center the heading horizontally */
   z-index: 999; /* Ensure it's above other elements */
+  font-weight: bold;
+  
 }
 body {
   display: flex;
@@ -59,7 +62,9 @@ body {
     margin-right: 2vw;
   }
   #heading {
+    margin-top: 3px;
   font-size: 4vw;
+  font-weight: bold;
 
 }
 #icon{
