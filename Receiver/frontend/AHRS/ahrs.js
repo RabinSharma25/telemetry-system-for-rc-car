@@ -92,6 +92,7 @@ function animate() {
     carGroup.rotation.copy(euler);
 
     renderer.render(scene, camera);
+    renderer.dispose()
 }
 
 function toggleFullScreen() {
