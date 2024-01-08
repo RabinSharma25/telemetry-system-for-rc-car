@@ -1,7 +1,8 @@
 const { parentPort, isMainThread } = require("worker_threads");
-
+const Decimal = require('decimal.js');
 const { InferenceSession, Tensor } = require('onnxruntime-node');
-let acc = 90;
+// let acc = new Decimal("0.33");
+let acc = 0.03
 async function runInference(modelPath, inputData, inputShape) {
   // Load the ONNX model
   const session = await InferenceSession.create(modelPath);
@@ -21,69 +22,50 @@ async function runInference(modelPath, inputData, inputShape) {
   // Post-process output data
   const label = labelTensor.data;
   const probabilities = probabilitiesTensor.data;
-
-  // Print the outputs
-  // console.log('Label:', label);
-  // console.log('Probabilities:', probabilities[0]);
   return probabilities[0];
 }
 
 // module.exports = { runInference };
-async function exampleUsage() {
+async function exampleUsage(data) {
   const modelPath = '/home/rabin-sharma/Documents/Github/Mini-Project/Receiver/backend/src/ML-Model/onnx_model.onnx';
   const inputShape = [1, 9]; // Shape for a 1D tensor with 1 row and 9 columns
-  const inputData = Float32Array.from([0.10, 6.14, 15, 0.00, 1, 1.55, 7, 11, 21]);
+  // const inputData = Float32Array.from([0.10, 6.14, 15, 0.00, 1, 1.55, 7, 11, 21]);
+  // 2.59,2.09,229.42,88.30,27.15,35,3389,7899.00,8009
+  // let dataArray = Object.values(data);
+  // console.log(dataArray)
+  if(data.length ===9){
 
-  acc = await runInference(modelPath, inputData, inputShape);
-  if (!isMainThread) {
-    parentPort.setMaxListeners(20); // Set it to a value that accommodates your listeners
-    parentPort.on('message', (data) => {
-      console.log("This is an apple");
-      exampleUsage(data);
-      parentPort.postMessage(acc);
-    });
-  
+    // console.log("rabin sharma");
+  let inputData = Float32Array.from(data);
+    // console.log(inputData);
+    acc = await runInference(modelPath, inputData, inputShape);
+    // console.log("The accuracy is: ",acc);
+
+    if (parentPort) {
+      parentPort.postMessage({ accu: acc });
+      // console.log("Inside the parentPort");
+    }
+  }
+  // console.log("array length: ",data.length);
+  // console.log("Type of data: ",typeof data);
+  // console.log("Type of dataarray: ",typeof dataArray);
+
   }
 
-  // else{
-  //   parentPort.postMessage(acc);
-    
-  // }
-}
+
+  if (!isMainThread) {
+
+    parentPort.on('message', (data) => {
+      // console.log("String data ",data.row);
+      let stringData = data.row;
+      let dataArray = stringData.split(',');// storing the values with ',' as separator
+      let numericArray = dataArray.map(value => parseFloat(value)); // converting the data to float
+      // console.log("apple");
+      exampleUsage(numericArray);
+      // console.log(acc);
+    }); 
+  }
 
 
-// Add an error handler to catch potential issues
-// parentPort.on('error', (error) => {
-//   console.error('Worker thread error:', error);
-// });
-
-// // Log a message when the worker thread is initialized
-// console.log('Worker thread initialized');
-
-
-// let val = 5;
-// parentPort.postMessage(acc);
-// console.log(acc);
-
-// parentPort.postMessage(acc);
-
-
-// *************The function below is used to find the input and output labels of the .onnx model ****************
-// const { InferenceSession } = require('onnxruntime-node');
-
-// async function getInOutNames(modelPath) {
-//     const session = await InferenceSession.create(modelPath);
-//     const inputNames = session.inputNames;
-//     const outputNames = session.outputNames;
-  
-//     return { inputNames, outputNames };
-//   }
-  
-//   getInOutNames(modelPath)
-//     .then(({ inputNames, outputNames }) => {
-//       console.log('Input Names:', inputNames);
-//       console.log('Output Names:', outputNames);
-//     })
-//     .catch(error => console.error('Error:', error));
 
 
