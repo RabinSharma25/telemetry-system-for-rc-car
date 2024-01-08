@@ -1,6 +1,5 @@
 div:hover {
     border: 50px; /* Change the margin on hover */
-    background-color: lightgray; /* Change background color on hover */
 }
 div{
 display: flex;
@@ -112,3 +111,17 @@ height: 50%;
 height: 100%;
 }
 }
+
+
+
+
+
+
+.chart-container.fullscreen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1000; /* Adjust z-index as needed */
+  }

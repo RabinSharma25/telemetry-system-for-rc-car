@@ -79,3 +79,31 @@ if(minutes<mins){
  // Return the log message
  return logMessage;
 }
+
+    // Function to handle window resize
+    window.addEventListener('resize', () => {
+      const iframes = document.querySelectorAll('iframe');
+      const containerWidth = document.querySelector('.container').offsetWidth;
+      const containerHeight = document.querySelector('.container').offsetHeight;
+
+      iframes.forEach(iframe => {
+        iframe.style.width = containerWidth / 2 + 'px';
+        iframe.style.height = containerHeight / 2 + 'px';
+      });
+    });
+
+    // Function to initially center the iframes
+    function centerIframes() {
+      const iframes = document.querySelectorAll('iframe');
+      const containerWidth = document.querySelector('.container').offsetWidth;
+      const containerHeight = document.querySelector('.container').offsetHeight;
+
+      iframes.forEach(iframe => {
+        iframe.style.width = containerWidth / 2 + 'px';
+        iframe.style.height = containerHeight / 2 + 'px';
+      });
+    }
+
+    // Call the centering function initially and after a delay to ensure proper centering
+    centerIframes();
+    setTimeout(centerIframes, 500);

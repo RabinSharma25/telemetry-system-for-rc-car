@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Gradients for Circle Border</title>
+  <style>
+    /* Your existing styles here */
+    html {
+      box-sizing: border-box;
+    }
+
+    *,
+    *:before,
+    *:after {
+      box-sizing: inherit;
+    }
+
+    html {
+      min-height: 50vw;
+    }
+
+    body {
+        background-color: white;
+      margin: 5vw auto;
+      max-width: 640px;
+      width: 60%;
+      text-align: center;
+    }
+
+    /**
+     * Circle Styles
+     */
+
+    .circle {
+      position: relative;
+      display: block;
+      margin: 2em 0;
+      background-color: transparent;
+      color: #222;
+      text-align: center;
+    }
+
+    /* .circle:after {
+      display: block;
+      padding-bottom: 100%;
+      width: 100%;
+      height: 0;
+      border-radius: 50%;
+      background-color: #ddd;
+      content: "";
+    } */
+
+    .circle__content {
+      display: table-cell;
+      padding: 1em;
+      vertical-align: middle;
+    }
+
+    @media (min-width: 480px) {
+      .circle__content {
+        font-size: 2em;
+      }
+    }
+
+    @media (min-width: 768px) {
+      .circle__content {
+        font-size: 4em;
+      }
+    }
+    #Text{
+        font-size: 0.5em;
+    }
+  </style>
+</head>
+<body>
+  <div class="circle">
+    <svg viewBox="0 0 100 100">
+      <defs>
+        <!-- Define gradients for different value ranges -->
+        <linearGradient id="greenGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+          <stop offset="0%" style="stop-color:green;stop-opacity:1" />
+          <stop offset="100%" style="stop-color:blue;stop-opacity:1" />
+        </linearGradient>
+        <linearGradient id="yellowGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+          <stop offset="0%" style="stop-color:yellow;stop-opacity:1" />
+          <stop offset="100%" style="stop-color:orange;stop-opacity:1" />
+        </linearGradient>
+        <linearGradient id="orangeGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+          <stop offset="0%" style="stop-color:orange;stop-opacity:1" />
+          <stop offset="100%" style="stop-color:red;stop-opacity:1" />
+        </linearGradient>
+        <!-- Define redGradient with appropriate color stops -->
+        <linearGradient id="redGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+          <stop offset="0%" style="stop-color:red;stop-opacity:1" />
+          <stop offset="100%" style="stop-color:darkred;stop-opacity:1" />
+        </linearGradient>
+        <!-- Add more gradients for different value ranges as needed -->
+      </defs>
+      <circle id="myCircle" cx="50" cy="50" r="40" stroke-width="10" fill="none" />
+      <text id="valueText" x="50" y="50" dominant-baseline="middle" text-anchor="middle">0</text>
+      <text id="Text" x="50" y="60" dominant-baseline="middle" text-anchor="middle">Accuracy</text>
+
+    </svg>
+  </div>
+
+  <script>
+     document.body.addEventListener('dblclick', () => {
+      toggleFullscreen(document.documentElement);
+    });
+
+    function toggleFullscreen(element) {
+      if (!document.fullscreenElement) {
+        element.requestFullscreen().catch(err => {
+          console.error(`Error attempting to enable full-screen mode: ${err.message}`);
+        });
+      } else {
+        document.exitFullscreen();
+      }
+    }
+
+    function setCircleGradient(value) {
+      const circle = document.getElementById('myCircle');
+      let gradientId = '';
+
+      // Define gradients based on different value ranges
+      if (value >= 10 && value <= 50) {
+        gradientId = 'redGradient'; // Gradient for value range 90-100
+
+      } else if (value > 50 && value <= 75) {
+        gradientId = 'orangeGradient'; // Gradient for value range 76-90
+
+      } else if (value > 75 && value <= 90) {
+        gradientId = 'yellowGradient'; // Gradient for value range 51-75
+
+      } else if (value > 90 && value <= 100) {
+        gradientId = 'greenGradient'; // Gradient for value range 10-50
+
+      }
+
+      // Apply the gradient to the circle's stroke
+      circle.setAttribute('stroke', `url(#${gradientId})`);
+      const valueText = document.getElementById('valueText');
+      valueText.textContent = value + '%';
+    }
+
+    const value = 92;
+    setCircleGradient(value); 
+    document.body.addEventListener('dblclick', () => {
+    toggleFullscreen(document.documentElement);
+  }); </script>
+</body>
+</html>
