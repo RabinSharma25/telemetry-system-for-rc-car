@@ -12,7 +12,7 @@ const app = express();
 const server = http.createServer(app);
 const wss = new WebSocket.Server({ server });
 const parser = new ReadlineParser({ delimiter: "\n" });
-const {Worker} = require("worker_threads");
+const {Worker,isMainThread} = require("worker_threads");
 
 const modelPath = '/home/rabin-sharma/Documents/Github/Mini-Project/Receiver/backend/src/ML-Model/onnx_model.onnx';
 const inputShape = [1, 9]; // Shape for a 1D tensor with 1 row and 9 columns
@@ -48,24 +48,24 @@ serialport.pipe(parser);
 
 const outputStream = fs.createWriteStream("output.csv", { flags: "a" });
 
-worker.on("msg",(dta)=>{
-  console.log("this is a mango");
-  accuracy = dta;
+
+
+if(isMainThread){
+worker.on("message",(dta)=>{
+  // console.log("this is a mango");
+  accuracy = dta.accu;
 })
+}
+
 parser.on("data", (data) => {
-  const line = data.toString().trim();
-  outputStream.write(`${line}\n`);
-  // Loop through connected WebSocket clients and send the data to all of them
-  // console.log(line);
-  worker.postMessage({ line });
+
+  outputStream.write(`${data}\n`);
+  worker.postMessage({ row:data });
   wss.clients.forEach((client) => {
     if (client.readyState === WebSocket.OPEN) {
       const datas = data.toString();
-      
-      // console.log("Serial data");
-      // console.log(datas);
-      // mlModel.runInference(modelPath, inputData,inputShape);
-      let res = datas+ "," +accuracy; // causing error because of the new line /n character 
+      let res = datas.slice(0, -1); // remove the last new line character 
+      res = res+","+accuracy +"\n";
       console.log(res);
       client.send(res);
 
