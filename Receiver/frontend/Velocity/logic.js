@@ -42,7 +42,7 @@ Highcharts.chart('container', {
   // the value axis
   yAxis: {
       min: 0,
-      max: 200,
+      max: 100,
       tickPixelInterval: 72,
       tickPosition: 'inside',
       tickColor: Highcharts.defaultOptions.chart.backgroundColor || '#FFFFFF',
@@ -50,7 +50,7 @@ Highcharts.chart('container', {
       tickWidth: 2,
       minorTickInterval: null,
       labels: {
-          distance: 20,
+          distance: 10,
           style: {
               fontSize: '14px'
           }
@@ -58,17 +58,17 @@ Highcharts.chart('container', {
       lineWidth: 0,
       plotBands: [{
           from: 0,
-          to: 120,
+          to: 40,
           color: '#55BF3B', // green
           thickness: 20
       }, {
-          from: 120,
-          to: 160,
+          from: 40,
+          to: 70,
           color: '#DDDF0D', // yellow
           thickness: 20
       }, {
-          from: 160,
-          to: 200,
+          from: 60,
+          to: 100,
           color: '#DF5353', // red
           thickness: 20
       }]

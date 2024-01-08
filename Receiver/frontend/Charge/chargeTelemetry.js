@@ -23,7 +23,7 @@ socket.addEventListener("message", (event) => {
   event.preventDefault(); // Prevent the default behavior
   dataArray = event.data.split(',');
   console.log(dataArray);
-  value = parseFloat(dataArray[0]);
+  value = parseFloat(dataArray[7]);
   let mappedValue = mapRange((value-6), 0, 2.4, 0, 100);
   if(mappedValue<val){
     val = mappedValue;
