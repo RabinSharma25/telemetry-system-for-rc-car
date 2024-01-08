@@ -27,7 +27,7 @@ async function runInference(modelPath, inputData, inputShape) {
 
 // module.exports = { runInference };
 async function exampleUsage(data) {
-  const modelPath = '/home/rabin-sharma/Documents/Github/Mini-Project/Receiver/backend/src/ML-Model/onnx_model.onnx';
+  const modelPath = '/home/ashwin/Downloads/Mini-Project/Receiver/backend/src/ML-Model/onnx_model.onnx';
   const inputShape = [1, 9]; // Shape for a 1D tensor with 1 row and 9 columns
   // const inputData = Float32Array.from([0.10, 6.14, 15, 0.00, 1, 1.55, 7, 11, 21]);
   // 2.59,2.09,229.42,88.30,27.15,35,3389,7899.00,8009
