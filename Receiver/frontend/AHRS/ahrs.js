@@ -21,8 +21,8 @@ socket.addEventListener("message", (event) => {
 });
 
 const scene3d = document.getElementById("scene3d");
-const w = scene3d.offsetWidth;
-const h = scene3d.offsetHeight;
+const w = scene3d.offsetWidth+100;
+const h = scene3d.offsetHeight+100;
 
 const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera(75, w / h, 0.1, 1000);
@@ -118,7 +118,32 @@ scene3d.addEventListener('click', (event) => {
 });
 
 // ... (previous code)
+function onWindowResize() {
 
+    if (!document.fullscreenElement) {
+        const newWidth = scene3d.offsetWidth +100;
+        const newHeight = scene3d.offsetHeight +100;
+    
+        camera.aspect = newWidth / newHeight;
+        camera.updateProjectionMatrix(); // Clear renderer's size to use CSS size
+        renderer.setSize(newWidth, newHeight);
+    }
+
+    else{
+    
+    const newWidth = scene3d.offsetWidth -300;
+    const newHeight = scene3d.offsetHeight -300;
+
+    camera.aspect = newWidth / newHeight;
+    camera.updateProjectionMatrix();
+
+   
+    renderer.setSize(newWidth, newHeight);
+    }
+}
+
+
+window.addEventListener('resize', onWindowResize);
 
 
 animate();
