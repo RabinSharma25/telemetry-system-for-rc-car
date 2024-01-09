@@ -14,13 +14,8 @@ const wss = new WebSocket.Server({ server });
 const parser = new ReadlineParser({ delimiter: "\n" });
 const {Worker,isMainThread} = require("worker_threads");
 
-const modelPath = '/home/ashwin/Downloads/Mini-Project/Receiver/backend/src/ML-Model/onnx_model.onnx';
-const inputShape = [1, 9]; // Shape for a 1D tensor with 1 row and 9 columns
-
-const inputData = Float32Array.from([0.10,6.14,15,0.00,1,1.55,7,11,21])
-
-
-const worker = new Worker('/home/ashwin/Downloads/Mini-Project/Receiver/backend/src/ML-Model/model.js')
+const modelFilePath = './src/ML-Model/model.js';
+const worker = new Worker(modelFilePath)
 let accuracy = 50;
 app.use((req, res, next) => {
   res.setHeader('Access-Control-Allow-Origin', '*'); // Allow access from any origin
