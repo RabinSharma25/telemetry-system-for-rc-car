@@ -6,7 +6,6 @@ const { SerialPort } = require("serialport");
 const logger = require("./src/utils/logger");
 const { ReadlineParser } = require("@serialport/parser-readline");
 const fs = require("fs");
-const mlModel = require("./src/ML-Model/model");
 
 const app = express();
 const server = http.createServer(app);
@@ -14,13 +13,9 @@ const wss = new WebSocket.Server({ server });
 const parser = new ReadlineParser({ delimiter: "\n" });
 const {Worker,isMainThread} = require("worker_threads");
 
-const modelPath = '/home/rabin-sharma/Documents/Github/Mini-Project/Receiver/backend/src/ML-Model/onnx_model.onnx';
-const inputShape = [1, 9]; // Shape for a 1D tensor with 1 row and 9 columns
+const threadFilePath = './src/ML-Model/model.js';
 
-const inputData = Float32Array.from([0.10,6.14,15,0.00,1,1.55,7,11,21])
-
-
-const worker = new Worker('/home/rabin-sharma/Documents/Github/Mini-Project/Receiver/backend/src/ML-Model/model.js')
+const worker = new Worker(threadFilePath);
 let accuracy = 50;
 app.use((req, res, next) => {
   res.setHeader('Access-Control-Allow-Origin', '*'); // Allow access from any origin
