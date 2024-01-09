@@ -68,7 +68,14 @@ const GPSGraph = new Chart(gps, {
     responsive: true,
     scales: {
       y: {
-        beginAtZero: true
+        beginAtZero: false,
+        reverse: false
+
+      },
+      x: {
+        reverse: true,
+        beginAtZero: false
+
       }
     }
   }
@@ -78,7 +85,7 @@ function updateGPS(value1,value2) {
   const label = "";
 
   // Check and remove the oldest data point if it exceeds the limit
-  if (GPSGraph.data.labels.length >= 30) {
+  if (GPSGraph.data.labels.length >= 250) {
     GPSGraph.data.labels.shift();
     GPSGraph.data.datasets.forEach(dataset => {
       dataset.data.shift();
@@ -89,7 +96,7 @@ function updateGPS(value1,value2) {
   GPSGraph.data.labels.push(label);
   GPSGraph.data.datasets[0].data.push(value1);
   GPSGraph.data.datasets[1].data.push(value2);
-  GPSGraph.update();
+  GPSGraph.update('none');
 }
 // AHRS GRAPH
 const ahrs = document.getElementById("chart1").getContext('2d');
@@ -132,6 +139,11 @@ const AHRSGraph = new Chart(ahrs, {
     scales: {
       y: {
         beginAtZero: true
+      },
+      x: {
+        reverse: true,
+        beginAtZero: false
+
       }
     },
     plugins: {
@@ -162,7 +174,7 @@ function updateAHRS(value1, value2, value3) {
   // Extract the label for the graph (empty for demonstration)
   const label = "";
   // Check and remove the oldest data point if it exceeds the limit
-  if (AHRSGraph.data.labels.length >= 30) {
+  if (AHRSGraph.data.labels.length >= 250) {
     AHRSGraph.data.labels.shift();
     AHRSGraph.data.datasets.forEach(dataset => {
       dataset.data.shift();
@@ -172,7 +184,7 @@ function updateAHRS(value1, value2, value3) {
   AHRSGraph.data.datasets[0].data.push(value1);
   AHRSGraph.data.datasets[1].data.push(value2);
   AHRSGraph.data.datasets[2].data.push(value3);
-  AHRSGraph.update();
+  AHRSGraph.update('none');
 }
 }
 
@@ -209,6 +221,10 @@ const BatteriesGraph = new Chart(batteries, {
     scales: {
       y: {
         beginAtZero: true
+      },
+      x: {
+        reverse: true,
+        beginAtZero: false
       }
     }
   }
@@ -216,7 +232,7 @@ const BatteriesGraph = new Chart(batteries, {
 
 function updateBatteries(value1,value2) {
   const label = "";
-  if (BatteriesGraph.data.labels.length >= 30) {
+  if (BatteriesGraph.data.labels.length >= 250) {
     BatteriesGraph.data.labels.shift();
     BatteriesGraph.data.datasets.forEach(dataset => {
       dataset.data.shift();
@@ -225,7 +241,7 @@ function updateBatteries(value1,value2) {
   BatteriesGraph.data.labels.push(label);
   BatteriesGraph.data.datasets[0].data.push(value1);
   BatteriesGraph.data.datasets[1].data.push(value2);
-  BatteriesGraph.update();
+  BatteriesGraph.update('none');
 }
 
 const temp = document.getElementById("chart3").getContext('2d');
@@ -251,6 +267,11 @@ const TempGraph = new Chart(temp, {
     scales: {
       y: {
         beginAtZero: true
+      },
+      x: {
+        reverse: true,
+        beginAtZero: false
+
       }
     },
     plugins: {
@@ -268,7 +289,7 @@ function updateTemp(value) {
   // Extract the label for the graph (empty for demonstration)
 const label = "";
   // Check and remove the oldest data point if it exceeds the limit
-  if (TempGraph.data.labels.length >= 30) {
+  if (TempGraph.data.labels.length >= 250) {
       TempGraph.data.labels.shift();
       TempGraph.data.datasets.forEach(dataset => {
         dataset.data.shift();
@@ -278,7 +299,7 @@ const label = "";
   TempGraph.data.datasets[0].data.push(value);
 
   // TempGraph.reverse();
-  TempGraph.update();
+  TempGraph.update('none');
 }
 
 // accuracy ---graph 4
@@ -306,6 +327,11 @@ const AccGraph = new Chart(acc, {
     scales: {
       y: {
         beginAtZero: true
+      },
+      x: {
+        reverse: true,
+        beginAtZero: false
+
       }
     },
     elements: {
@@ -320,7 +346,7 @@ function updateAcc(value) {
   const label = "";
 
   // Check and remove the oldest data point if it exceeds the limit
-  if (AccGraph.data.labels.length >= 30) {
+  if (AccGraph.data.labels.length >= 250) {
     AccGraph.data.labels.shift();
     AccGraph.data.datasets.forEach(dataset => {
       dataset.data.shift();
@@ -328,7 +354,7 @@ function updateAcc(value) {
   }
   AccGraph.data.labels.push(label);
   AccGraph.data.datasets[0].data.push(value);
-  AccGraph.update();
+  AccGraph.update('none');
 }
 
 // velocity --graph 5
@@ -355,6 +381,11 @@ const VelGraph = new Chart(vel, {
     scales: {
       y: {
         beginAtZero: true
+      },
+      x: {
+        reverse: true,
+        beginAtZero: false
+
       }
     }
   }
@@ -365,7 +396,7 @@ function updateVelocity(value) {
   const label = "";
 
   // Check and remove the oldest data point if it exceeds the limit
-  if (VelGraph.data.labels.length >= 30) {
+  if (VelGraph.data.labels.length >= 250) {
     VelGraph.data.labels.shift();
     VelGraph.data.datasets.forEach(dataset => {
       dataset.data.shift();
@@ -375,7 +406,7 @@ function updateVelocity(value) {
   // Update the graph with new data for each dataset
   VelGraph.data.labels.push(label);
   VelGraph.data.datasets[0].data.push(value);
-  VelGraph.update();
+  VelGraph.update('none');
 }
 
 
