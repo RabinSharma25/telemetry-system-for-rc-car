@@ -154,34 +154,31 @@
 
 ///////////////////// box for test //////////////////////
 
-// Select the div with id "scene3d"
-import * as THREE from 'three';
+import * as THREE from '../../backend/node_modules/three';
 import { FontLoader } from '../../backend/node_modules/three/examples/jsm/loaders/FontLoader.js'
 import { TextGeometry } from '../../backend/node_modules/three/examples/jsm/geometries/TextGeometry.js'
 
-// const path = 
+import {Scene} from 
+const app = THREE.a
+
 const scene3d = document.getElementById("scene3d");
 
-// Set up the scene, camera, and renderer
 const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera(75, scene3d.clientWidth / scene3d.clientHeight, 0.1, 1000);
 const renderer = new THREE.WebGLRenderer();
 renderer.setSize(scene3d.clientWidth, scene3d.clientHeight);
 scene3d.appendChild(renderer.domElement);
 
-// Create a cube with a basic material
 const geometry = new THREE.BoxGeometry();
 const material = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
 const cube = new THREE.Mesh(geometry, material);
 scene.add(cube);
 
-// Set up the camera position
 camera.position.z = 5;
 
-// Create text labels for each face
 const faceLabels = ["Front", "Back", "Top", "Bottom", "Right", "Left"];
 const labelMaterials = new Array(6).fill(new THREE.MeshBasicMaterial({ color: 0xffffff }));
-
+console.log("the geometry object: ",geometry);
 const textLoader = new FontLoader();
 textLoader.load('https://threejs.org/examples/fonts/helvetiker_regular.typeface.json', function (font) {
     if (!font) {
@@ -190,14 +187,11 @@ textLoader.load('https://threejs.org/examples/fonts/helvetiker_regular.typeface.
     }
 
     faceLabels.forEach((label, index) => {
-        console.log("label: ", label);
-        console.log("index: ", index)
-        // const app = geometry.
-        if (geometry.faces[index] && geometry.faces[index].normal) {
-            const normal = geometry.faces[index].normal;
-            const position = new THREE.Vector3().copy(normal).multiplyScalar(1.1);
+        const face = cube.geometry.faceVertexUvs[0][index * 2][0];
 
-            console.log(`Face ${index} - Normal:`, normal, "Position:", position);
+        if (face) {
+            const normal = face.normal;
+            const position = new THREE.Vector3().copy(normal).multiplyScalar(1.1);
 
             const textGeometry = new TextGeometry(label, {
                 font: font,
@@ -209,24 +203,19 @@ textLoader.load('https://threejs.org/examples/fonts/helvetiker_regular.typeface.
             textMesh.position.copy(position);
             cube.add(textMesh);
         } else {
-            console.error(`Face ${index} does not have a valid normal.`);
+            console.error(`Face ${index} does not exist.`);
         }
     });
 
-    // Render the scene
     animate();
 });
 
-
-// Create an animation function
 const animate = function () {
     requestAnimationFrame(animate);
 
-    // Rotate the cube
     cube.rotation.x += 0.01;
     cube.rotation.y += 0.01;
 
     renderer.render(scene, camera);
 };
-
 
