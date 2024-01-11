@@ -107,6 +107,21 @@ Highcharts.chart('container', {
   }]
 
 });
-// document.getElementById('fullscreen').addEventListener('click', function () {
-//     chart.fullscreen.open();
+
+// function toggleFullscreen(element) {
+//     if (!document.fullscreenElement) {
+//         element.requestFullscreen().catch(err => {
+//             console.error(`Error attempting to enable full-screen mode: ${err.message}`);
+//         });
+//     } else {
+//         document.exitFullscreen();
+//     }
+// }
+
+// // Add double-click event listeners to divs
+// const divs = document.querySelectorAll('container');
+// divs.forEach(div => {
+//     div.addEventListener('dblclick', () => {
+//         toggleFullscreen(div);
+//     });
 // });

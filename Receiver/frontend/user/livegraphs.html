@@ -2,11 +2,24 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Multiple Charts with Fullscreen</title>
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <link rel="stylesheet" href="Styles/livegraphs.css">
 </head>
 <body>
+  <main class="navigation" id="navigation">
+    <main class="menuToggle"></main>
+    <div class="menu">
+        <ul>
+            <li style="--i:0.1s;"><a href="livegraphs.html" title="Go to Live Graphs"><i><img class="logos" src="Assets/graphs.png" alt="Live Graphs" /></i></a></li>
+            <li style="--i:0.2s;"><a href="about.html" title="Go to About"><i><img class="logos" src="Assets/about.png" alt="About" /></i></a></li>
+            <li style="--i:0.3s;"><a href="dash.html" title="Go to Home"><i><img class="logos" src="Assets/back.png" alt="Back" /></i></a></li>
+        </ul>
+      </div>
+    </main>
+
   <div class="chart-column">
     <div class="chart-container">
       <canvas id="chart1"></canvas>
@@ -31,7 +44,13 @@
       <canvas id="chart6"></canvas>
     </div>
   </div>
-
+  <script>
+    let menuToggle = document.querySelector('.menuToggle');
+    menuToggle.ondblclick=function(){
+        menuToggle.classList.toggle('active')
+    }
+</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-LLWL5N9CSM"></script>
   <script src="Scripts/livegraphs.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels"></script>
 
