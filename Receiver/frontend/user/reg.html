@@ -6,43 +6,49 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@10">
 </head>
 <body>
-  <div id="main">
+  <div class="video-background">
+    <video autoplay loop muted>
+      <source src="Assets/oo.mp4" type="video/mp4">
+    </video>
+    <img src="Assets/logo.png">
+    <form id="signupform">
+    <div id="main">
     <div class="h-tag">
-      <h2>Register Here!</h2>
-  <form id="myForm">
+      <h2>Sign Up</h2>
   </div>
   <div class="login">
-    <table cellspacing="2" align="center" cellpadding="8" border="0">
+    <table align="center" border="0">
       <tr>
-
-
-
-    <td><label for="firstName">First Name:</label></td>
-    <td><input type="text" placeholder="Enter Full Name here" id="firstName" name="firstName"></td>
+    <td><h4><label for="firstName">First Name:</label></h4></td>
+    <td><input type="text" placeholder="Enter Full Name here" id="firstName" name="firstName" class="tb"></td>
     </tr>
     <tr>
-    <td><label for="lastName">Last Name:</label></td>
-   <td> <input type="text" placeholder="Enter Last Name here" id="lastName" name="lastName"></td>
+    <td><h4><label for="lastName">Last Name:</label></h4></td>
+   <td> <input type="text" placeholder="Enter Last Name here" id="lastName" name="lastName" class="tb"></td>
   </tr>
   <tr>
-   <td><label for="email">Email:</label></td>
-    <td><input type="text" placeholder="Enter Email ID here" id="email" name="email"><br></td>
+   <td><h4><label for="email">Email:</label></h4></td>
+    <td><input type="text" placeholder="Enter Email ID here" id="email" name="email" class="tb"><br></td>
   </tr>
   <tr>
-    <td><label for="password">Password:</label></td>
- <td><input type="password" placeholder="Enter Password here" id="password" name="password"></td>
+    <td><h4><label for="password">Password:</label></td></h4></td>
+ <td><input type="password" placeholder="Enter Password here" id="password" name="password" class="tb"></td>
+  </tr>
+  <tr>
+    <td></td>
+    <td>
+      <input type="submit" value="Sign Up" id="signup"></td>
   </tr>
   </table>
-    <input type="submit" value="Create Account" class="btn">
+</div></div>
   </form>
-  </div></div>
-
+  </div>
   <script>
     // Function to handle form submission
     function submitForm(event) {
       event.preventDefault(); // Prevent the default form submission
   
-      var formData = new FormData(document.getElementById("myForm"));
+      var formData = new FormData(document.getElementById("signupform"));
      
       var jsonObject = {
     firstName: formData.get('firstName'),
@@ -81,7 +87,7 @@
     }
   
     // Event listener for form submission
-    document.getElementById("myForm").addEventListener("submit", submitForm);
+    document.getElementById("signupform").addEventListener("submit", submitForm);
   </script>
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 
