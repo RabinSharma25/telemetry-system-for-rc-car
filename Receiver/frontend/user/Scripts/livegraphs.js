@@ -1,4 +1,4 @@
- // Function to generate random data for the graphs
+
  updateValues();
  function updateValues(){
  let roll=0;
@@ -75,7 +75,6 @@ const GPSGraph = new Chart(gps, {
       x: {
         reverse: true,
         beginAtZero: false
-
       }
     },
     plugins: {
@@ -510,8 +509,7 @@ function updateVelocity(value) {
 // const chart4=Accuracy("chart4");
 // const chart5=Velocity("chart5");
 // const chart6=GPS("chart6");
-for (let i = 0; i <= 6; i++) {
-const canvas = document.getElementById(`chart${i}`);
+const canvas = document.getElementById("chart1");
 if (canvas) {
 canvas.addEventListener('dblclick', () => {
   if (!document.fullscreenElement) {
@@ -523,7 +521,6 @@ canvas.addEventListener('dblclick', () => {
   }
 });
 }
-} 
 
 
 // pop up

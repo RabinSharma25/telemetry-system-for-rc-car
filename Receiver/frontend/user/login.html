@@ -15,11 +15,9 @@
     <div class="video-background">
       <video autoplay loop muted>
         <source src="Assets/oo.mp4" type="video/mp4">
-        <!-- You can add additional source tags for different video formats -->
-        Your browser does not support the video tag.
       </video>
 <img src="Assets/logo.png">
-    <form id="Loginform">
+    <form id="signinform">
   <!-- Main div code -->
   <div id="main">
   <div class="h-tag">
@@ -29,21 +27,22 @@
   <div class="login">
   <table align="center" border="0">
   <tr>
-  <td align="center"><h4>Enter Email ID :</h4></td>
+  <td><h4><label>Enter Email ID :</label></h4></td>
   <td><input type="text" placeholder="Enter Email ID here" name="email" id="email" class="tb" /></td>
   </tr>
   <tr>	  
-  <td align="center"><h4>Enter Password :</h4></td>
+  <td><h4><label>Enter Password :</h4></label></td>
   <td><input type="password" name="password" placeholder="Enter Password here" id="password" class="tb" /></td>
   </tr>
   <tr>
-  <td></td>
+    <td></td>
   <td>
   <input type="submit" value="Sign In" id="signin"></td>
   </tr>
   <tr>
   <td>
-    <input type="button" value="Haven't Registered Yet? Go and Register." id="goregister"></td></tr>
+    <p>Not registered?</p>
+    <input type="button" value="Register Here" id="goregister"></td></tr>
 </table>
   </div>
   </div>
@@ -54,7 +53,7 @@
   function submitForm(event) {
     event.preventDefault(); // Prevent the default form submission
   
-    var formData = new FormData(document.getElementById("Loginform"));
+    var formData = new FormData(document.getElementById("signinform"));
     var jsonObject = {
       email: formData.get('email'),
       password: formData.get('password')
@@ -101,7 +100,7 @@ button.addEventListener('click', function() {
   window.location.href = 'reg.html'; // Replace with your desired URL
 });
   // Event listener for form submission
-  document.getElementById("Loginform").addEventListener("submit", submitForm);
+  document.getElementById("signinform").addEventListener("submit", submitForm);
 
 </script>
 
