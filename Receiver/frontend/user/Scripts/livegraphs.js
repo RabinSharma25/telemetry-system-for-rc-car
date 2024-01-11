@@ -46,7 +46,7 @@ const GPSGraph = new Chart(gps, {
     {
         label: 'Longitude',
         data: [],
-        borderColor: 'rgba(255, 99, 132, 1)',
+        borderColor: "black",
         borderWidth: 2,
         fill: false,
         pointRadius: 0, // Set point radius to 0 to hide markers
@@ -55,7 +55,7 @@ const GPSGraph = new Chart(gps, {
       {
         label: 'Latitude',
         data: [],
-        borderColor: 'rgba(255, 99, 132, 1)',
+        borderColor: 'orange',
         borderWidth: 2,
         fill: false,
         pointRadius: 0, // Set point radius to 0 to hide markers
@@ -77,7 +77,27 @@ const GPSGraph = new Chart(gps, {
         beginAtZero: false
 
       }
-    }
+    },
+    plugins: {
+      title: {
+          display: true,
+          text: 'Line Graph for GPS' // Chart title
+      },
+      legend: {
+          display: true,
+          labels: {
+              font: {
+                  size: 14 // Legend label font size
+              }
+          }
+      },
+      tooltip: {
+          enabled: true,
+          backgroundColor: 'black', // Tooltip background color
+          titleColor: 'white', // Tooltip title color
+          bodyColor: 'white' // Tooltip body text color
+      }
+  }
   }
 });
 function updateGPS(value1,value2) {
@@ -108,7 +128,7 @@ const AHRSGraph = new Chart(ahrs, {
       {
         label: 'Roll',
         data: [],
-        borderColor: 'rgba(255, 99, 132, 1)',
+        borderColor: 'blue',
         borderWidth: 2,
         fill: false,
         pointRadius: 0, // Set point radius to 0 to hide markers
@@ -117,7 +137,7 @@ const AHRSGraph = new Chart(ahrs, {
       {
         label: 'Pitch',
         data: [],
-        borderColor: 'rgba(54, 162, 235, 1)',
+        borderColor: 'black',
         borderWidth: 2,
         fill: false,
         pointRadius: 0, // Set point radius to 0 to hide markers
@@ -126,7 +146,7 @@ const AHRSGraph = new Chart(ahrs, {
       {
         label: 'Yaw',
         data: [],
-        borderColor: 'rgba(75, 192, 192, 1)',
+        borderColor: 'red',
         borderWidth: 2,
         fill: false,
         pointRadius: 0, // Set point radius to 0 to hide markers
@@ -149,7 +169,7 @@ const AHRSGraph = new Chart(ahrs, {
     plugins: {
       title: {
           display: true,
-          text: 'Customized Line Chart' // Chart title
+          text: 'Line Graph for Orientation' // Chart title
       },
       legend: {
           display: true,
@@ -198,7 +218,7 @@ const BatteriesGraph = new Chart(batteries, {
       {
     label: 'RC Car',
         data: [],
-        borderColor: 'rgba(255, 99, 132, 1)',
+        borderColor: 'red',
         borderWidth: 2,
         fill: false,
         pointRadius: 0, // Set point radius to 0 to hide markers
@@ -207,7 +227,7 @@ const BatteriesGraph = new Chart(batteries, {
       {
         label: 'Telemetry Module',
         data: [],
-        borderColor: 'rgba(255, 199, 12, 1)',
+        borderColor: 'yellow',
         borderWidth: 2,
         fill: false,
         pointRadius: 0, // Set point radius to 0 to hide markers
@@ -226,7 +246,27 @@ const BatteriesGraph = new Chart(batteries, {
         reverse: true,
         beginAtZero: false
       }
-    }
+    },
+    plugins: {
+      title: {
+          display: true,
+          text: 'Line Graph for Batteries' // Chart title
+      },
+      legend: {
+          display: true,
+          labels: {
+              font: {
+                  size: 14 // Legend label font size
+              }
+          }
+      },
+      tooltip: {
+          enabled: true,
+          backgroundColor: 'black', // Tooltip background color
+          titleColor: 'white', // Tooltip title color
+          bodyColor: 'white' // Tooltip body text color
+      }
+  }
   }
 });
 
@@ -253,7 +293,7 @@ const TempGraph = new Chart(temp, {
       {
         label: 'Temperature',
         data: [],
-        borderColor: 'rgba(255, 99, 132, 1)',
+        borderColor: 'purple',
         borderWidth: 2,
         fill: false,
         pointRadius: 0, // Set point radius to 0 to hide markers
@@ -275,11 +315,23 @@ const TempGraph = new Chart(temp, {
       }
     },
     plugins: {
-      datalabels: {
+      title: {
           display: true,
-          align: 'top', // Position of labels
-          color: 'black' // Label text color
-          // You can add more styling options as needed
+          text: 'Line Graph for Temperature' // Chart title
+      },
+      legend: {
+          display: true,
+          labels: {
+              font: {
+                  size: 14 // Legend label font size
+              }
+          }
+      },
+      tooltip: {
+          enabled: true,
+          backgroundColor: 'black', // Tooltip background color
+          titleColor: 'white', // Tooltip title color
+          bodyColor: 'white' // Tooltip body text color
       }
   }
   }
@@ -312,7 +364,7 @@ const AccGraph = new Chart(acc, {
       {
         label: 'Accuracy',
         data: [],
-        borderColor: 'rgba(255, 99, 132, 1)',
+        borderColor: 'lightgreen',
         borderWidth: 2,
         fill: false,
         pointRadius: 0, // Set point radius to 0 to hide markers
@@ -338,7 +390,27 @@ const AccGraph = new Chart(acc, {
       point: {
           radius: 6 // Adjust the width of each data point
       }
-  }
+  },
+  plugins: {
+    title: {
+        display: true,
+        text: 'Line Graph for Accuracy' // Chart title
+    },
+    legend: {
+        display: true,
+        labels: {
+            font: {
+                size: 14 // Legend label font size
+            }
+        }
+    },
+    tooltip: {
+        enabled: true,
+        backgroundColor: 'black', // Tooltip background color
+        titleColor: 'white', // Tooltip title color
+        bodyColor: 'white' // Tooltip body text color
+    }
+}
   }
 });
 function updateAcc(value) {
@@ -367,7 +439,7 @@ const VelGraph = new Chart(vel, {
       {
         label: 'Velocity',
         data: [],
-        borderColor: 'rgba(255, 99, 132, 1)',
+        borderColor: 'violet',
         borderWidth: 2,
         fill: false,
         pointRadius: 0, // Set point radius to 0 to hide markers
@@ -387,7 +459,27 @@ const VelGraph = new Chart(vel, {
         beginAtZero: false
 
       }
-    }
+    },
+    plugins: {
+      title: {
+          display: true,
+          text: 'Line Graph for Velocity' // Chart title
+      },
+      legend: {
+          display: true,
+          labels: {
+              font: {
+                  size: 14 // Legend label font size
+              }
+          }
+      },
+      tooltip: {
+          enabled: true,
+          backgroundColor: 'black', // Tooltip background color
+          titleColor: 'white', // Tooltip title color
+          bodyColor: 'white' // Tooltip body text color
+      }
+  }
   }
 });
 
