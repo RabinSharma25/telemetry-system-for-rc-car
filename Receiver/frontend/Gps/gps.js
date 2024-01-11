@@ -24,9 +24,7 @@ socket.addEventListener("message", async (mess) => {
 		mapboxgl.accessToken = 'pk.eyJ1IjoiYXNoMjAyMyIsImEiOiJjbGwzeG9vcjUwMHplM21tZWwxcGowcjBiIn0.19apdWmAwoXWbrkf3NBKsA';
 
 		const map = new mapboxgl.Map({
-			container: 'map', // container ID
-			// Choose from Mapbox's core styles, or make your own style with Mapbox Studio
-			style: 'mapbox://styles/mapbox/navigation-day-v1', // style URL
+			container: 'map', // container ID			style: 'mapbox://styles/mapbox/navigation-day-v1', // style URL
 			center: [long, lati], // starting position [lng, lat]
 			zoom: 12 // starting zoom
 		});

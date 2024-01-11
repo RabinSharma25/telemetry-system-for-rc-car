@@ -1,4 +1,7 @@
-  const socket = new WebSocket("ws://localhost:3000");
+
+
+
+const socket = new WebSocket("ws://localhost:3000");
 
 socket.addEventListener("message", (event) => {
   event.preventDefault(); // Prevent the default behavior
@@ -32,3 +35,5 @@ function updateValue(value) {
   }
   icon.src = iconPath;
 }
+
+
