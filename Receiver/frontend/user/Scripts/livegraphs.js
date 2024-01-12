@@ -104,7 +104,7 @@ function updateGPS(value1,value2) {
   const label = "";
 
   // Check and remove the oldest data point if it exceeds the limit
-  if (GPSGraph.data.labels.length >= 250) {
+  if (GPSGraph.data.labels.length >= 100) {
     GPSGraph.data.labels.shift();
     GPSGraph.data.datasets.forEach(dataset => {
       dataset.data.shift();
@@ -193,7 +193,7 @@ function updateAHRS(value1, value2, value3) {
   // Extract the label for the graph (empty for demonstration)
   const label = "";
   // Check and remove the oldest data point if it exceeds the limit
-  if (AHRSGraph.data.labels.length >= 250) {
+  if (AHRSGraph.data.labels.length >= 100) {
     AHRSGraph.data.labels.shift();
     AHRSGraph.data.datasets.forEach(dataset => {
       dataset.data.shift();
@@ -271,7 +271,7 @@ const BatteriesGraph = new Chart(batteries, {
 
 function updateBatteries(value1,value2) {
   const label = "";
-  if (BatteriesGraph.data.labels.length >= 250) {
+  if (BatteriesGraph.data.labels.length >= 100) {
     BatteriesGraph.data.labels.shift();
     BatteriesGraph.data.datasets.forEach(dataset => {
       dataset.data.shift();
@@ -340,7 +340,7 @@ function updateTemp(value) {
   // Extract the label for the graph (empty for demonstration)
 const label = "";
   // Check and remove the oldest data point if it exceeds the limit
-  if (TempGraph.data.labels.length >= 250) {
+  if (TempGraph.data.labels.length >= 100) {
       TempGraph.data.labels.shift();
       TempGraph.data.datasets.forEach(dataset => {
         dataset.data.shift();
@@ -417,7 +417,7 @@ function updateAcc(value) {
   const label = "";
 
   // Check and remove the oldest data point if it exceeds the limit
-  if (AccGraph.data.labels.length >= 250) {
+  if (AccGraph.data.labels.length >= 100) {
     AccGraph.data.labels.shift();
     AccGraph.data.datasets.forEach(dataset => {
       dataset.data.shift();
@@ -487,7 +487,7 @@ function updateVelocity(value) {
   const label = "";
 
   // Check and remove the oldest data point if it exceeds the limit
-  if (VelGraph.data.labels.length >= 250) {
+  if (VelGraph.data.labels.length >= 100) {
     VelGraph.data.labels.shift();
     VelGraph.data.datasets.forEach(dataset => {
       dataset.data.shift();
@@ -502,13 +502,6 @@ function updateVelocity(value) {
 
 
 
-
-// const chart1=AHRS("chart1");
-// const chart2=Batteries("chart2");
-// const chart3=Temperature("chart3");
-// const chart4=Accuracy("chart4");
-// const chart5=Velocity("chart5");
-// const chart6=GPS("chart6");
 const canvas = document.getElementById("chart1");
 if (canvas) {
 canvas.addEventListener('dblclick', () => {
