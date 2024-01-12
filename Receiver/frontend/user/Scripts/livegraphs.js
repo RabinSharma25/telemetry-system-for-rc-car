@@ -1,4 +1,4 @@
-
+const points=50;
  updateValues();
  function updateValues(){
  let roll=0;
@@ -104,7 +104,7 @@ function updateGPS(value1,value2) {
   const label = "";
 
   // Check and remove the oldest data point if it exceeds the limit
-  if (GPSGraph.data.labels.length >= 100) {
+  if (GPSGraph.data.labels.length >= points) {
     GPSGraph.data.labels.shift();
     GPSGraph.data.datasets.forEach(dataset => {
       dataset.data.shift();
@@ -193,7 +193,7 @@ function updateAHRS(value1, value2, value3) {
   // Extract the label for the graph (empty for demonstration)
   const label = "";
   // Check and remove the oldest data point if it exceeds the limit
-  if (AHRSGraph.data.labels.length >= 100) {
+  if (AHRSGraph.data.labels.length >= points) {
     AHRSGraph.data.labels.shift();
     AHRSGraph.data.datasets.forEach(dataset => {
       dataset.data.shift();
@@ -271,7 +271,7 @@ const BatteriesGraph = new Chart(batteries, {
 
 function updateBatteries(value1,value2) {
   const label = "";
-  if (BatteriesGraph.data.labels.length >= 100) {
+  if (BatteriesGraph.data.labels.length >= points) {
     BatteriesGraph.data.labels.shift();
     BatteriesGraph.data.datasets.forEach(dataset => {
       dataset.data.shift();
@@ -340,7 +340,7 @@ function updateTemp(value) {
   // Extract the label for the graph (empty for demonstration)
 const label = "";
   // Check and remove the oldest data point if it exceeds the limit
-  if (TempGraph.data.labels.length >= 100) {
+  if (TempGraph.data.labels.length >= points) {
       TempGraph.data.labels.shift();
       TempGraph.data.datasets.forEach(dataset => {
         dataset.data.shift();
@@ -417,7 +417,7 @@ function updateAcc(value) {
   const label = "";
 
   // Check and remove the oldest data point if it exceeds the limit
-  if (AccGraph.data.labels.length >= 100) {
+  if (AccGraph.data.labels.length >= points) {
     AccGraph.data.labels.shift();
     AccGraph.data.datasets.forEach(dataset => {
       dataset.data.shift();
@@ -487,7 +487,7 @@ function updateVelocity(value) {
   const label = "";
 
   // Check and remove the oldest data point if it exceeds the limit
-  if (VelGraph.data.labels.length >= 100) {
+  if (VelGraph.data.labels.length >= points) {
     VelGraph.data.labels.shift();
     VelGraph.data.datasets.forEach(dataset => {
       dataset.data.shift();
