@@ -277,8 +277,18 @@ td{
       padding: 10px;
     }
     .h-tag {
-      font-size: 4vw; /* Adjust font size for smaller screens */
+      font-size: 2rem; /* Adjust font size for smaller screens */
     }
+
+    h4{
+        font-size: 1rem;
+        text-align: center;
+        color: white;
+        font-family: 'Roboto', sans-serif; /* Setting the font family */
+        margin: 0px;
+        font-weight: bolder;
+    }
+
     #main .tb {
         margin: 3px;
         text-align: left;   
