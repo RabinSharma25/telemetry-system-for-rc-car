@@ -52,12 +52,46 @@
   
       var formData = new FormData(document.getElementById("signupform"));
      
-      var jsonObject = {
-    firstName: formData.get('firstName'),
-    lastName: formData.get('lastName'),
-    email: formData.get('email'),
-    password: formData.get('password')
+  var firstName = formData.get('firstName');
+  var lastName = formData.get('lastName');
+  var email = formData.get('email');
+  var password = formData.get('password');
+
+   // Simple validation rules
+   if (!firstName || !lastName || !email || !password) {
+      alert('Please fill in all fields.');
+    return;
+  }
+
+  // Email validation using a regular expression
+  var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  if (!emailRegex.test(email)) {
+    alert('Please enter a valid email address.');
+    return;
+  }
+
+  // Password validation (add your own rules)
+  var passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^a-zA-Z\d\s]).{6,}$/;
+  if (!passwordRegex.test(password)) {
+    alert('Password must contain at least 1 uppercase letter, 1 lowercase letter, a number, and 1 non-alphabetic character. It should be at least 6 characters long.');
+    return;
+  }
+
+  var jsonObject = {
+    firstName: firstName,
+    lastName: lastName,
+    email: email,
+    password: password
   };
+
+  //     var jsonObject = {
+  //   firstName: formData.get('firstName'),
+  //   lastName: formData.get('lastName'),
+  //   email: formData.get('email'),
+  //   password: formData.get('password')
+  // };
+  // 
+  
   var fullJSON = JSON.stringify(jsonObject, null, 2); // Convert the object to full JSON format
   console.log(fullJSON); // Output the full JSON string to console
 
