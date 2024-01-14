@@ -154,68 +154,84 @@
 
 ///////////////////// box for test //////////////////////
 
-import * as THREE from '../../backend/node_modules/three';
-import { FontLoader } from '../../backend/node_modules/three/examples/jsm/loaders/FontLoader.js'
-import { TextGeometry } from '../../backend/node_modules/three/examples/jsm/geometries/TextGeometry.js'
+// import * as THREE from '../../backend/node_modules/three';
+// import { FontLoader } from '../../backend/node_modules/three/examples/jsm/loaders/FontLoader.js'
+// import { TextGeometry } from '../../backend/node_modules/three/examples/jsm/geometries/TextGeometry.js'
 
-import {Scene} from 
-const app = THREE.a
+// import {Scene} from 
+// const app = THREE.a
 
-const scene3d = document.getElementById("scene3d");
+// const THREE = require("three");
+// import * as THREE from '../frontend/node_modules/three'
+// import { FontLoader } from '../node_modules/three/examples/jsm/loaders/FontLoader.js'
+// import { TextGeometry } from "../node_modules/three/examples/jsm/geometries/TextGeometry.js"
+
+
+import * as THREE from "../node_modules/three/build/three.module.js"
+
+// import { TextGeometry } from "https://threejs.org/examples/js/geometries/TextGeometry.js"; // Include the TextGeometry library
+
+
+
+import TextGeometry from "../node_modules/three/examples/jsm/Addons.js"
+
+// import * as THREE from 'three';
 
 const scene = new THREE.Scene();
-const camera = new THREE.PerspectiveCamera(75, scene3d.clientWidth / scene3d.clientHeight, 0.1, 1000);
-const renderer = new THREE.WebGLRenderer();
-renderer.setSize(scene3d.clientWidth, scene3d.clientHeight);
-scene3d.appendChild(renderer.domElement);
 
-const geometry = new THREE.BoxGeometry();
-const material = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
-const cube = new THREE.Mesh(geometry, material);
-scene.add(cube);
 
+// const textGeo = new TextGeometry();
+// const textGeo= new TextGeometry( 'Hello three.js!', {
+//     font: font,
+//     size: 80,
+//     height: 5,
+//     curveSegments: 12,
+//     bevelEnabled: true,
+//     bevelThickness: 10,
+//     bevelSize: 8,
+//     bevelSegments: 5
+// } );
+
+
+// Set up camera
+const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
 camera.position.z = 5;
 
-const faceLabels = ["Front", "Back", "Top", "Bottom", "Right", "Left"];
-const labelMaterials = new Array(6).fill(new THREE.MeshBasicMaterial({ color: 0xffffff }));
-console.log("the geometry object: ",geometry);
-const textLoader = new FontLoader();
-textLoader.load('https://threejs.org/examples/fonts/helvetiker_regular.typeface.json', function (font) {
-    if (!font) {
-        console.error("Failed to load the font.");
-        return;
-    }
+// Set up renderer
+const renderer = new THREE.WebGLRenderer();
+const container = document.getElementById('scene3d');
+renderer.setSize(container.clientWidth, container.clientHeight);
+container.appendChild(renderer.domElement);
 
-    faceLabels.forEach((label, index) => {
-        const face = cube.geometry.faceVertexUvs[0][index * 2][0];
+// Create a box geometry
+const geometry = new THREE.BoxGeometry();
+const material = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
+const box = new THREE.Mesh(geometry, material);
+scene.add(box);
 
-        if (face) {
-            const normal = face.normal;
-            const position = new THREE.Vector3().copy(normal).multiplyScalar(1.1);
-
-            const textGeometry = new TextGeometry(label, {
-                font: font,
-                size: 0.3,
-                height: 0.05,
-            });
-
-            const textMesh = new THREE.Mesh(textGeometry, labelMaterials[index]);
-            textMesh.position.copy(position);
-            cube.add(textMesh);
-        } else {
-            console.error(`Face ${index} does not exist.`);
-        }
-    });
-
-    animate();
-});
-
-const animate = function () {
+// Set up animation
+const animate = () => {
     requestAnimationFrame(animate);
 
-    cube.rotation.x += 0.01;
-    cube.rotation.y += 0.01;
+    // Rotate the box
+    box.rotation.x += 0.01;
+    box.rotation.y += 0.01;
 
+    // Render the scene
     renderer.render(scene, camera);
 };
+
+// Handle window resize
+window.addEventListener('resize', () => {
+    const newWidth = container.clientWidth;
+    const newHeight = container.clientHeight;
+
+    camera.aspect = newWidth / newHeight;
+    camera.updateProjectionMatrix();
+
+    renderer.setSize(newWidth, newHeight);
+});
+
+// Start the animation
+animate();
 
