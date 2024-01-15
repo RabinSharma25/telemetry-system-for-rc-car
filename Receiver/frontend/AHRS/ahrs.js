@@ -173,24 +173,13 @@ import * as THREE from "../node_modules/three/build/three.module.js"
 
 
 
-import TextGeometry from "../node_modules/three/examples/jsm/Addons.js"
+// import { TextGeometry } from "../node_modules/three/examples/jsm/Addons.js"
+// import { TextGeometry } from '../../backend/node_modules/three/examples/jsm/geometries/TextGeometry.js'
 
 // import * as THREE from 'three';
 
 const scene = new THREE.Scene();
 
-
-// const textGeo = new TextGeometry();
-// const textGeo= new TextGeometry( 'Hello three.js!', {
-//     font: font,
-//     size: 80,
-//     height: 5,
-//     curveSegments: 12,
-//     bevelEnabled: true,
-//     bevelThickness: 10,
-//     bevelSize: 8,
-//     bevelSegments: 5
-// } );
 
 
 // Set up camera
