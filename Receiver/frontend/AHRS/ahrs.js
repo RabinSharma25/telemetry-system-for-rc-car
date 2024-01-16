@@ -167,14 +167,9 @@
 // import { TextGeometry } from "../node_modules/three/examples/jsm/geometries/TextGeometry.js"
 
 
-import * as THREE from "../node_modules/three/build/three.module.js"
-
-// import { TextGeometry } from "https://threejs.org/examples/js/geometries/TextGeometry.js"; // Include the TextGeometry library
-
-
-
-// import { TextGeometry } from "../node_modules/three/examples/jsm/Addons.js"
-// import { TextGeometry } from '../../backend/node_modules/three/examples/jsm/geometries/TextGeometry.js'
+import * as THREE from 'three'
+// import { TextGeometry } from 'three/addons/geometries/TextGeometry'
+import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 
 // import * as THREE from 'three';
 
@@ -192,12 +187,50 @@ const container = document.getElementById('scene3d');
 renderer.setSize(container.clientWidth, container.clientHeight);
 container.appendChild(renderer.domElement);
 
+const loader = new THREE.TextureLoader()
+
+
+const Planegeometry = new THREE.PlaneGeometry( 10, 10 );
+const Planematerial = new THREE.MeshBasicMaterial( {color: 0xffff00, side: THREE.DoubleSide} );
+const plane = new THREE.Mesh( Planegeometry, Planematerial );
+plane.rotateX(-Math.PI/3);
+// plane.visible = false;
+// scene.add( plane );
+
+
+// const ambient = new THREE.AmbientLight(0x999999)
+// scene.add(ambient);
+// const light =  new THREE.DirectionalLight(0xffffff);
+// light.position.set(0,0,6);
+// scene.add(light);
+
 // Create a box geometry
 const geometry = new THREE.BoxGeometry();
-const material = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
+// geometry.
+// geometry.attributes.position.name = "front";
+console.log(geometry);
+const material = new THREE.MeshBasicMaterial(
+    {   
+       map: loader.load("cat.png")
+        // color:0x2727e6
+        // map:loader.load("front.png")
+    
+    }
+    );
 const box = new THREE.Mesh(geometry, material);
+box.position.set(0,2,0);
 scene.add(box);
 
+const grid = new THREE.GridHelper(20,100,100,100);
+grid.rotateX(Math.PI/5)
+scene.add(grid);
+grid .position.set(0,-2,0);
+
+
+
+
+const orbit = new OrbitControls(camera,renderer.domElement);
+orbit.update();
 // Set up animation
 const animate = () => {
     requestAnimationFrame(animate);
