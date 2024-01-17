@@ -84,7 +84,7 @@ body{
 overflow: scroll;
 }
 }
-@media screen and (max-width: 1500px) {
+@media screen and (max-width: 1300px) {
 body{
 overflow: scroll;
 }
@@ -105,10 +105,16 @@ width: 100%;
 .half-height {
 height: 50%;
 }
+body{
+    overflow: scroll;
+}
 }
 @media screen and (max-width: 480px) {
 .half-height {
 height: 100%;
+}
+body{
+    overflow: scroll;
 }
 }
 
