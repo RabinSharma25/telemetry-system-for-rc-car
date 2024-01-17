@@ -90,7 +90,7 @@ padding-top: 130px;
 justify-content: center;
 text-align: center;
 color: #414141;
-font-size: 0.7rem;
+font-size: 0.7em;
 }
 
 
@@ -167,7 +167,7 @@ display: block;
           /* font-weight: bold; */
           position: absolute;
           display: block;
-          font-size: 0.8rem;
+          font-size: 0.8em;
           text-align: center;
           justify-content: center;
           margin-left: 50px;
