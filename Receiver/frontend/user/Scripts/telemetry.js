@@ -20,23 +20,8 @@ divs.forEach(div => {
 // till here
 
 
-const scaledDiv = document.querySelector('.scaledDiv');
-// const iframe = scaledDiv.querySelector('iframe');
+// const scaledDiv = document.querySelector('.scaledDiv');
 
-// Function to scale down contents
-// function scaleContents() {
-//     iframe.style.transform = 'scale(0.8)';
-//     iframe.style.width = '125%';
-//     iframe.style.height = '125%';
-// }
-
-// // Call the function to scale down on page load
-// scaleContents();
-
-
-
-
-// velocity fullscreen
 // popup
 window.dataLayer = window.dataLayer || [];
 function gtag(){dataLayer.push(arguments);}
