@@ -85,7 +85,7 @@ carGroup.add(rearRightWheel);
 
 
 /************* Create the helper grid plane **************/
-const grid = new THREE.GridHelper(20,100,100,100);
+const grid = new THREE.GridHelper(20,100,50,50);
 // grid.rotateX(Math.PI/5)
 grid .position.set(0,-2,0);
 
