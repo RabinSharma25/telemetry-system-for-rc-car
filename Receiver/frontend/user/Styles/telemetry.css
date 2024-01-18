@@ -6,24 +6,26 @@ display: flex;
     overflow: hidden;
     /* border:2px solid #070707; */
     border: 2px solid black;
-    margin: 0.17vw;
+    margin-bottom: 0.17vh;
+    margin-left: 0.17vh;
+    margin-right: 0.17vh;
 }
 
-iframe{
-  width: 69vh;
-    height: 50vh;
+/* iframe{
+  width: 69vw;
+    height: 50vw;
     overflow: hidden;
-}
+} */
 
 .ahrs{
-    width: 69vw;
+    width: 69vh;
     height: 48vh;
     border: none; /* Remove iframe borders */
     
 }
 .scaledDiv {
     width: 69vh;
-    height: 50vh;
+    height: 48vh;
     overflow: hidden; /* Hide overflow content when scaled down */
 
 }
