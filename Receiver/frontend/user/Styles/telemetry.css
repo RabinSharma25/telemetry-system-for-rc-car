@@ -2,9 +2,11 @@
 div{
 display: flex;
     width: 69vh;
-    height: 50vh;
+    height: 48vh;
     overflow: hidden;
-    border:2px solid #070707;
+    /* border:2px solid #070707; */
+    border: 2px solid black;
+    margin: 3px;
 }
 
 iframe{
@@ -14,8 +16,8 @@ iframe{
 }
 
 .ahrs{
-    width: 69vh;
-    height: 50vh;
+    width: 69vw;
+    height: 48vh;
     border: none; /* Remove iframe borders */
     
 }
