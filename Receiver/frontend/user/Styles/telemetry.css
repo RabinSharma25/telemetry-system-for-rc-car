@@ -6,7 +6,7 @@ display: flex;
     overflow: hidden;
     /* border:2px solid #070707; */
     border: 2px solid black;
-    margin: 3px;
+    margin: 0.17vw;
 }
 
 iframe{
