@@ -9,9 +9,13 @@ display: flex;
 align-items: center;
 justify-content: center;  
 font-family: sans-serif;
+overflow: hidden;
+}
+html{
+  overflow: hidden;
 }
 .container{
-  margin-top: 200px;
+  margin-top: 150px;
   border: none;
 align-items: center;
 padding: 0; /* Remove default padding */
@@ -90,7 +94,7 @@ padding-top: 130px;
 justify-content: center;
 text-align: center;
 color: #414141;
-font-size: 0.7em;
+font-size: 75%;
 }
 
 
@@ -148,38 +152,38 @@ display: block;
           height: 200px;
           width: 1000px;
           box-shadow: 0 1.20vw 2.40vw rgba(0,0,0,0.4);
-          top: 100px;
+          top: 10%;
           /* left: 24.25vw; */
           text-align: center;
           align-items: center;
-          margin-bottom: 20px;
+          margin-bottom: 10%;
           color: teal;
         }
 
         .headheader{
-          margin-top: 20px;
-          margin-bottom: 20px;
+          margin-top: 3%;
+          margin-bottom: 3%;
           color: teal;
-          margin-left: 50px;
-          margin-right: 50px;
+          margin-left: 10%;
+          margin-right: 10%;
         }
         .headp1{
           /* font-weight: bold; */
           position: absolute;
           display: block;
-          font-size: 0.8em;
+          font-size: 80%;
           text-align: center;
           justify-content: center;
-          margin-left: 50px;
-          margin-right: 50px;
+          margin-left: 10%;
+          margin-right: 10%;
         }
         text{
           display: block;
         }
 
-        .margin{
+        /* .margin{
           margin-top: 900px;
-        }
+        } */
 
         /* .logout{
           position: relative;
@@ -190,11 +194,11 @@ left: 1490px;
           .headdiv{
             display: block;
             position: absolute;
-            height: 290px;
+            height: 250px;
             width: 430px;
             box-shadow: 0 1.20vw 2.40vw rgba(0,0,0,0.4);
             text-align: center;
             align-items: center;
-            margin-bottom: 20px;
+            margin-bottom: 10%;
           }
         }

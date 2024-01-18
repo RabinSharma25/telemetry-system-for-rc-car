@@ -29,12 +29,12 @@ display: flex;
     overflow: hidden; /* Hide overflow content when scaled down */
 
 }
-.scaledDiv iframe {
+/* .scaledDiv iframe {
     transform: scale(0.8);
     transform-origin: 0 0; 
     width: 125%; 
     height: 125%;
-}
+} */
 
 body {
 display: flex;
@@ -44,9 +44,7 @@ margin: 0;
 padding: 0;
 overflow: hidden;
 }
-html{
-    overflow: hidden;
-}
+
 
 
 .clickable-iframe {
@@ -54,8 +52,8 @@ pointer-events:none;
 }
 
 .clickable-div {
-width: 39.68rem;
-height: 28.75rem; 
+width: 69vh;
+height: 48vh; 
 /* margin: 10px; */
 cursor: pointer;
 }
@@ -83,21 +81,23 @@ height: 100%;
 
 
 
-@media screen and (max-width: 500px) {
+/* @media screen and (max-width: 500px) {
 body{
 overflow: scroll;
 }
-}
-@media screen and (max-width: 1300px) {
+} */
+@media screen and (max-width: 1700px) {
 body{
-overflow: scroll;
+overflow: auto;
+} 
 }
-}
+
 @media screen and (max-width: 100%) {
 body{
 overflow: hidden;
 }
 }
+
 
 @media screen and (max-width: 768px) {
 .container {
@@ -110,15 +110,16 @@ width: 100%;
 height: 50%;
 }
 body{
-    overflow: scroll;
+overflow: auto;
 }
 }
-@media screen and (max-width: 480px) {
+
+@media screen and (max-width: 400px) {
 .half-height {
 height: 100%;
 }
 body{
-    overflow: scroll;
+    overflow: auto;
 }
 }
 
