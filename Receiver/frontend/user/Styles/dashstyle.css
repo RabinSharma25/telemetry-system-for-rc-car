@@ -4,7 +4,7 @@ body {
 margin: 0;
 padding: 0;
 /* min-height: 100vh; */
-width: 100vw;
+width: 100%;
 display: flex;
 align-items: center;
 justify-content: center;  
@@ -15,12 +15,13 @@ overflow: hidden;
   overflow: hidden;
 } */
 .container{
-  margin-top: 150px;
+  /* margin-top: 100px; */
   border: none;
 align-items: center;
 padding: 0; /* Remove default padding */
 }
 .card{
+  margin-top: 55px;
   border: 0px;
   border-color: transparent; 
 }
@@ -150,7 +151,7 @@ display: block;
           display: block;
           position: absolute;
           height: 200px;
-          width: 1000px;
+          width: 1100px;
           box-shadow: 0 1.20vw 2.40vw rgba(0,0,0,0.4);
           top: 10%;
           /* left: 24.25vw; */
@@ -210,5 +211,12 @@ left: 1490px;
             color: teal;
             margin-left: 5%;
             margin-right: 5%;
+          }
+         
+          .card{
+            margin-top: 160px;
+            border: none;
+          align-items: center;
+          padding: 0; /* Remove default padding */
           }
         }
