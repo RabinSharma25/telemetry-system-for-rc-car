@@ -11,9 +11,9 @@ justify-content: center;
 font-family: sans-serif;
 overflow: hidden;
 }
-html{
+/* html{
   overflow: hidden;
-}
+} */
 .container{
   margin-top: 150px;
   border: none;
@@ -81,8 +81,8 @@ transform: translateY(0);
 .container .card .slide.slide2::after{
 content: "";
 position: absolute;
-width: 30px;
-height: 4px;
+/* width: 30px; */
+/* height: 4px; */
 bottom: 15px;
 align-items: center;
 transform: translateX(-50%);
@@ -194,11 +194,21 @@ left: 1490px;
           .headdiv{
             display: block;
             position: absolute;
-            height: 250px;
+            height: 270px;
             width: 430px;
             box-shadow: 0 1.20vw 2.40vw rgba(0,0,0,0.4);
             text-align: center;
             align-items: center;
             margin-bottom: 10%;
+          }
+          body{
+            overflow: auto;
+          }
+          .headheader{
+            margin-top: 2%;
+            margin-bottom: 2%;
+            color: teal;
+            margin-left: 5%;
+            margin-right: 5%;
           }
         }
