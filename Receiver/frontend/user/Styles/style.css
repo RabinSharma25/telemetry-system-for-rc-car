@@ -275,7 +275,7 @@ td{
     padding: 0px;
 }
 
-@media screen and (max-width: 1408px) {
+@media screen and (max-width:1108px) {
     #main {
       width: 95%;
       padding: 10px;

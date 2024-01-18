@@ -38,7 +38,7 @@ socket.addEventListener("message", async (mess) => {
 					coordinates: [long, lati]
 				},
 				properties: {
-					title: 'Mapbox',
+					title: '',
 					description: 'Sikkim'
 				}
 			}
