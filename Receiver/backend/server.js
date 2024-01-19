@@ -13,7 +13,7 @@ const wss = new WebSocket.Server({ server });
 const parser = new ReadlineParser({ delimiter: "\n" });
 const {Worker,isMainThread} = require("worker_threads");
 
-const threadFilePath = './src/ML-Model/model.js';
+const threadFilePath = './src/ML-Model/model.js'; // path to the ml-model thread
 
 const worker = new Worker(threadFilePath);
 let accuracy = 50;
