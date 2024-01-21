@@ -28,7 +28,7 @@ renderer.setSize(w, h, false);
 scene3d.appendChild(renderer.domElement);
 
 /*************** setup euler system of three.js ****************/
-const euler = new THREE.Euler(pitch, yaw, roll);
+const euler = new THREE.Euler(-roll, yaw, -pitch);
 
 /************** Create the loader object to load the images **************/
 const loader = new THREE.TextureLoader()
@@ -40,8 +40,8 @@ const carMaterials = [
     new THREE.MeshBasicMaterial({map: loader.load("back.png")}), // Back
     new THREE.MeshBasicMaterial({map: loader.load("top.png")}), // Top
     new THREE.MeshBasicMaterial({ map: loader.load("bottom.png")}), // Bottom
-    new THREE.MeshBasicMaterial({map: loader.load("left.png")}), // Right
-    new THREE.MeshBasicMaterial({map: loader.load("right.png")})  // Left
+    new THREE.MeshBasicMaterial({map: loader.load("right.png")}), // Right
+    new THREE.MeshBasicMaterial({map: loader.load("left.png")})  // Left
     // new THREE.MeshBasicMaterial({ color: 0x0000ff }), // Front
     // new THREE.MeshBasicMaterial({ color: 0x0000ff }), // Back
     // new THREE.MeshBasicMaterial({ color: 0x0000ff }), // Top
@@ -161,7 +161,7 @@ function degrees_to_radians(degrees) {
 function animate() {
     requestAnimationFrame(animate);
 
-    euler.set(pitch, (yaw-180), roll);
+    euler.set(-roll, (yaw), -pitch);
     carGroup.rotation.copy(euler);
 
     renderer.render(scene, camera);
