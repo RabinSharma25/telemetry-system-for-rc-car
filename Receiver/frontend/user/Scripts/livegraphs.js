@@ -1,4 +1,4 @@
- // Function to generate random data for the graphs
+const points=50;
  updateValues();
  function updateValues(){
  let roll=0;
@@ -46,7 +46,7 @@ const GPSGraph = new Chart(gps, {
     {
         label: 'Longitude',
         data: [],
-        borderColor: 'rgba(255, 99, 132, 1)',
+        borderColor: "black",
         borderWidth: 2,
         fill: false,
         pointRadius: 0, // Set point radius to 0 to hide markers
@@ -55,7 +55,7 @@ const GPSGraph = new Chart(gps, {
       {
         label: 'Latitude',
         data: [],
-        borderColor: 'rgba(255, 99, 132, 1)',
+        borderColor: 'orange',
         borderWidth: 2,
         fill: false,
         pointRadius: 0, // Set point radius to 0 to hide markers
@@ -75,9 +75,28 @@ const GPSGraph = new Chart(gps, {
       x: {
         reverse: true,
         beginAtZero: false
-
       }
-    }
+    },
+    plugins: {
+      title: {
+          display: true,
+          text: 'Line Graph for GPS' // Chart title
+      },
+      legend: {
+          display: true,
+          labels: {
+              font: {
+                  size: 14 // Legend label font size
+              }
+          }
+      },
+      tooltip: {
+          enabled: true,
+          backgroundColor: 'black', // Tooltip background color
+          titleColor: 'white', // Tooltip title color
+          bodyColor: 'white' // Tooltip body text color
+      }
+  }
   }
 });
 function updateGPS(value1,value2) {
@@ -85,7 +104,7 @@ function updateGPS(value1,value2) {
   const label = "";
 
   // Check and remove the oldest data point if it exceeds the limit
-  if (GPSGraph.data.labels.length >= 250) {
+  if (GPSGraph.data.labels.length >= points) {
     GPSGraph.data.labels.shift();
     GPSGraph.data.datasets.forEach(dataset => {
       dataset.data.shift();
@@ -108,7 +127,7 @@ const AHRSGraph = new Chart(ahrs, {
       {
         label: 'Roll',
         data: [],
-        borderColor: 'rgba(255, 99, 132, 1)',
+        borderColor: 'blue',
         borderWidth: 2,
         fill: false,
         pointRadius: 0, // Set point radius to 0 to hide markers
@@ -117,7 +136,7 @@ const AHRSGraph = new Chart(ahrs, {
       {
         label: 'Pitch',
         data: [],
-        borderColor: 'rgba(54, 162, 235, 1)',
+        borderColor: 'black',
         borderWidth: 2,
         fill: false,
         pointRadius: 0, // Set point radius to 0 to hide markers
@@ -126,7 +145,7 @@ const AHRSGraph = new Chart(ahrs, {
       {
         label: 'Yaw',
         data: [],
-        borderColor: 'rgba(75, 192, 192, 1)',
+        borderColor: 'red',
         borderWidth: 2,
         fill: false,
         pointRadius: 0, // Set point radius to 0 to hide markers
@@ -149,7 +168,7 @@ const AHRSGraph = new Chart(ahrs, {
     plugins: {
       title: {
           display: true,
-          text: 'Customized Line Chart' // Chart title
+          text: 'Line Graph for Orientation' // Chart title
       },
       legend: {
           display: true,
@@ -174,7 +193,7 @@ function updateAHRS(value1, value2, value3) {
   // Extract the label for the graph (empty for demonstration)
   const label = "";
   // Check and remove the oldest data point if it exceeds the limit
-  if (AHRSGraph.data.labels.length >= 250) {
+  if (AHRSGraph.data.labels.length >= points) {
     AHRSGraph.data.labels.shift();
     AHRSGraph.data.datasets.forEach(dataset => {
       dataset.data.shift();
@@ -198,7 +217,7 @@ const BatteriesGraph = new Chart(batteries, {
       {
     label: 'RC Car',
         data: [],
-        borderColor: 'rgba(255, 99, 132, 1)',
+        borderColor: 'red',
         borderWidth: 2,
         fill: false,
         pointRadius: 0, // Set point radius to 0 to hide markers
@@ -207,7 +226,7 @@ const BatteriesGraph = new Chart(batteries, {
       {
         label: 'Telemetry Module',
         data: [],
-        borderColor: 'rgba(255, 199, 12, 1)',
+        borderColor: 'yellow',
         borderWidth: 2,
         fill: false,
         pointRadius: 0, // Set point radius to 0 to hide markers
@@ -226,13 +245,33 @@ const BatteriesGraph = new Chart(batteries, {
         reverse: true,
         beginAtZero: false
       }
-    }
+    },
+    plugins: {
+      title: {
+          display: true,
+          text: 'Line Graph for Batteries' // Chart title
+      },
+      legend: {
+          display: true,
+          labels: {
+              font: {
+                  size: 14 // Legend label font size
+              }
+          }
+      },
+      tooltip: {
+          enabled: true,
+          backgroundColor: 'black', // Tooltip background color
+          titleColor: 'white', // Tooltip title color
+          bodyColor: 'white' // Tooltip body text color
+      }
+  }
   }
 });
 
 function updateBatteries(value1,value2) {
   const label = "";
-  if (BatteriesGraph.data.labels.length >= 250) {
+  if (BatteriesGraph.data.labels.length >= points) {
     BatteriesGraph.data.labels.shift();
     BatteriesGraph.data.datasets.forEach(dataset => {
       dataset.data.shift();
@@ -253,7 +292,7 @@ const TempGraph = new Chart(temp, {
       {
         label: 'Temperature',
         data: [],
-        borderColor: 'rgba(255, 99, 132, 1)',
+        borderColor: 'purple',
         borderWidth: 2,
         fill: false,
         pointRadius: 0, // Set point radius to 0 to hide markers
@@ -275,11 +314,23 @@ const TempGraph = new Chart(temp, {
       }
     },
     plugins: {
-      datalabels: {
+      title: {
           display: true,
-          align: 'top', // Position of labels
-          color: 'black' // Label text color
-          // You can add more styling options as needed
+          text: 'Line Graph for Temperature' // Chart title
+      },
+      legend: {
+          display: true,
+          labels: {
+              font: {
+                  size: 14 // Legend label font size
+              }
+          }
+      },
+      tooltip: {
+          enabled: true,
+          backgroundColor: 'black', // Tooltip background color
+          titleColor: 'white', // Tooltip title color
+          bodyColor: 'white' // Tooltip body text color
       }
   }
   }
@@ -289,7 +340,7 @@ function updateTemp(value) {
   // Extract the label for the graph (empty for demonstration)
 const label = "";
   // Check and remove the oldest data point if it exceeds the limit
-  if (TempGraph.data.labels.length >= 250) {
+  if (TempGraph.data.labels.length >= points) {
       TempGraph.data.labels.shift();
       TempGraph.data.datasets.forEach(dataset => {
         dataset.data.shift();
@@ -312,7 +363,7 @@ const AccGraph = new Chart(acc, {
       {
         label: 'Accuracy',
         data: [],
-        borderColor: 'rgba(255, 99, 132, 1)',
+        borderColor: 'lightgreen',
         borderWidth: 2,
         fill: false,
         pointRadius: 0, // Set point radius to 0 to hide markers
@@ -338,7 +389,27 @@ const AccGraph = new Chart(acc, {
       point: {
           radius: 6 // Adjust the width of each data point
       }
-  }
+  },
+  plugins: {
+    title: {
+        display: true,
+        text: 'Line Graph for Accuracy' // Chart title
+    },
+    legend: {
+        display: true,
+        labels: {
+            font: {
+                size: 14 // Legend label font size
+            }
+        }
+    },
+    tooltip: {
+        enabled: true,
+        backgroundColor: 'black', // Tooltip background color
+        titleColor: 'white', // Tooltip title color
+        bodyColor: 'white' // Tooltip body text color
+    }
+}
   }
 });
 function updateAcc(value) {
@@ -346,7 +417,7 @@ function updateAcc(value) {
   const label = "";
 
   // Check and remove the oldest data point if it exceeds the limit
-  if (AccGraph.data.labels.length >= 250) {
+  if (AccGraph.data.labels.length >= points) {
     AccGraph.data.labels.shift();
     AccGraph.data.datasets.forEach(dataset => {
       dataset.data.shift();
@@ -367,7 +438,7 @@ const VelGraph = new Chart(vel, {
       {
         label: 'Velocity',
         data: [],
-        borderColor: 'rgba(255, 99, 132, 1)',
+        borderColor: 'violet',
         borderWidth: 2,
         fill: false,
         pointRadius: 0, // Set point radius to 0 to hide markers
@@ -387,7 +458,27 @@ const VelGraph = new Chart(vel, {
         beginAtZero: false
 
       }
-    }
+    },
+    plugins: {
+      title: {
+          display: true,
+          text: 'Line Graph for Velocity' // Chart title
+      },
+      legend: {
+          display: true,
+          labels: {
+              font: {
+                  size: 14 // Legend label font size
+              }
+          }
+      },
+      tooltip: {
+          enabled: true,
+          backgroundColor: 'black', // Tooltip background color
+          titleColor: 'white', // Tooltip title color
+          bodyColor: 'white' // Tooltip body text color
+      }
+  }
   }
 });
 
@@ -396,7 +487,7 @@ function updateVelocity(value) {
   const label = "";
 
   // Check and remove the oldest data point if it exceeds the limit
-  if (VelGraph.data.labels.length >= 250) {
+  if (VelGraph.data.labels.length >= points) {
     VelGraph.data.labels.shift();
     VelGraph.data.datasets.forEach(dataset => {
       dataset.data.shift();
@@ -411,16 +502,7 @@ function updateVelocity(value) {
 
 
 
-
-const chart1=AHRS("chart1");
-const chart2=Batteries("chart2");
-const chart3=Temperature("chart3");
-const chart4=Accuracy("chart4");
-const chart5=Velocity("chart5");
-const chart6=GPS("chart6");
-for (let i = 0; i <= 6; i++) {
-const canvas = document.getElementById(`chart${i}`);
-
+const canvas = document.getElementById("chart1");
 if (canvas) {
 canvas.addEventListener('dblclick', () => {
   if (!document.fullscreenElement) {
@@ -432,4 +514,53 @@ canvas.addEventListener('dblclick', () => {
   }
 });
 }
-} 
+
+
+// pop up
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-LLWL5N9CSM');
+
+dragElement(document.getElementById("navigation"));
+
+function dragElement(elmnt) {
+var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
+if (document.getElementById(elmnt.id + "header")) {
+  // if present, the header is where you move the DIV from:
+  document.getElementById(elmnt.id + "header").onmousedown = dragMouseDown;
+} else {
+  // otherwise, move the DIV from anywhere inside the DIV:
+  elmnt.onmousedown = dragMouseDown;
+}
+
+function dragMouseDown(e) {
+//   e = e || window.event;
+  e.preventDefault();
+  // get the mouse cursor position at startup:
+  pos3 = e.clientX;
+  pos4 = e.clientY;
+  document.onmouseup = closeDragElement;
+  // call a function whenever the cursor moves:
+  document.onmousemove = elementDrag;
+}
+
+function elementDrag(e) {
+//   e = e || window.event;
+  e.preventDefault();
+  // calculate the new cursor position:
+  pos1 = pos3 - e.clientX;
+  pos2 = pos4 - e.clientY;
+  pos3 = e.clientX;
+  pos4 = e.clientY;
+  // set the element's new position:
+  elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
+  elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
+}
+
+function closeDragElement() {
+  // stop moving when mouse button is released:
+  document.onmouseup = null;
+  document.onmousemove = null;
+}
+}
