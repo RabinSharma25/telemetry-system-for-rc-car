@@ -48,6 +48,3 @@ let value2 = value.toFixed(2); // Rounds to 2 decimal points
 
 setCircleGradient(value2); 
 });
-  document.body.addEventListener('dblclick', () => {
-  toggleFullscreen(document.documentElement);
-}); 

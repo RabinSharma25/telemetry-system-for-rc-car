@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fullscreen Divs</title>
+    <title>Telemetry Visualization</title>
 	 <!-- three.js cnd links   -->
 	<script async src="https://unpkg.com/es-module-shims@1.6.3/dist/es-module-shims.js"></script>
 
@@ -17,15 +17,37 @@
 		</script>
       <!-- <script src="socket.io/socket.io.js"></script> -->
       <link rel="stylesheet" href="Styles/telemetry.css">
+      <link rel="icon" type="image/x-icon" href="Assets/logo2.png">
+
 </head>
 <body>
+  <main class="navigation" id="navigation">
+    <main class="menuToggle"></main>
+    <div class="menu">
+        <ul>
+            <li style="--i:0.1s;"><a href="livegraphs.html" title="Go to Live Graphs"><i><img class="logos" src="Assets/graphs.png" alt="Live Graphs" /></i></a></li>
+            <li style="--i:0.2s;"><a href="about.html" title="Go to About"><i><img class="logos" src="Assets/about.png" alt="About" /></i></a></li>
+            <li style="--i:0.3s;"><a href="dash.html" title="Go to Home"><i><img class="logos" src="Assets/back.png" alt="Back" /></i></a></li>
+        </ul>
+      </div>
+    </main>
+
+
+
     <div id="fullscreenDiv1 scaledDiv"><iframe class="ahrs" src="../AHRS/ahrs.html" scrolling="no"></iframe></div>
     <div id="fullscreenDiv2 scaledDiv"><iframe class="clickable-iframe" src="../Temperature/temp.html" style="width:100% ;height:100%;" scrolling="no"></iframe></div>
     <div id="fullscreenDiv3 scaledDiv"><iframe class="clickable-iframe" src="../Velocity/velocity.html" style="width:100% ;height:100%" scrolling="no"></iframe></div>   
     <div id="fullscreenDiv4 scaledDiv"><iframe src="../Charge/charge2in1.html" style="width:100% ;height:100%" scrolling="no"></iframe></div>
     <div id="fullscreenDiv5 scaledDiv"><iframe src="../Accuracy/acc.html" style="width:100% ;height:100%" scrolling="no">Accuracy</iframe></div>
-    <div id="fullscreenDiv6 scaledDiv" style="background-color: purple;"><iframe src="../Gps/gps.html" style="width:100% ;height:100%" scrolling="no">gps</iframe></div>
+    <div id="fullscreenDiv6 scaledDiv"><iframe src="../Gps/gps.html" style="width:100% ;height:100%" scrolling="no">gps</iframe></div>
     	<!-- <script type = "module" src = "script.js"></script> -->
+      <script>
+        let menuToggle = document.querySelector('.menuToggle');
+        menuToggle.ondblclick=function(){
+            menuToggle.classList.toggle('active')
+        }
+    </script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-LLWL5N9CSM"></script>
     <script src="Scripts/telemetry.js"></script>
 </body>
 </html> 

@@ -2,14 +2,16 @@
 <html>
 
 <head>
-    <title>Card Hover Effect</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Welcome to Telemetry System</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="Styles/dashstyle.css" rel="stylesheet">
     <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
         integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@10">
+        <link rel="icon" type="image/x-icon" href="Assets/logo2.png">
+
 </head>
 
 <body>
@@ -18,7 +20,7 @@
   </nav>
   <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
     <div class="container-fluid">
-        <a class="navbar-brand" href="#">Telemetry for RC Car</a>
+        <a class="navbar-brand" href="#"><img src="Assets/logo2.png" /></a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
             aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -35,18 +37,22 @@
                     <a class="nav-link" href="contatcus.html">Contact Us</a>
             </ul>
             <!-- <span class="navbar-text"> -->
-              <button class="nav-link" id="logout">Log Out</button>
+              <button class="nav-link logout" id="logout">Log Out</button>
             <!-- </span> -->
         </div>
     </div>
 </nav>
 
-
-
 <div class="background"></div>
+<!-- <img id="logo" src="Assets/logo2.png"> -->
+<div class="headdiv"><h1 class="headheader">Welcome to Telemetry System For RC Car!</h1>
+<text class="headp1">This project mainly focuses on wirelessly transmitting the details of a remotely controlled vehicle to the ground station with the help of radio waves. Our project offers you two categories of Visualization for the incoming data. Go ahead and try them! </text>
+</div> 
+
+
 <div class="container-fluid mt-5">
   <div class="row justify-content-center">
-      <div class="col-lg-4 col-md-6 col-sm-12 mb-4 margin">
+      <div class="col-lg-5 col">
           <div class="card" style="border: none; background-color: rgba(0, 0, 0, 0)!important;">
               <!-- ... Card content ... -->
               <div class="container d-flex justify-content-center" style="background-color: rgba(0, 0, 0, 0)!important;">
@@ -64,10 +70,8 @@
                       </div>
                       <div class="slide slide2">
                           <div class="content">
-                              <h3>Telemetry Visualization</h3>
-                              <p>With the help of CSS, HTML and JavaScript, this section visualizes various properties related to the
-                                  vehicle namely, Velocity, Temperature, Orientation, GPS Location and Battery Percentage of the
-                                  batteries in the vehicle.</p>
+                              <p>This section visualizes various properties related to the
+                                  vehicle namely, Velocity, Temperature, Orientation, GPS Location and Battery Percentage.</p>
                           </div>
                       </div>
                   </div>
@@ -75,7 +79,7 @@
           
           </div>
       </div>
-      <div class="col-lg-4 col-md-6 col-sm-12 mb-4 margin">
+      <div class="col-lg-4 col">
           <div class="card" style="border: none; background-color: rgba(0, 0, 0, 0)!important;">
               <!-- ... Card content ... -->
                  <div class="container d-flex justify-content-center" style="border: none; background-color: rgba(0, 0, 0, 0)!important;">
@@ -93,8 +97,7 @@
           </div>
           <div class="slide slide2">
               <div class="content">
-                  <h3>Live Graphs</h3>
-                  <p>With the help of CSS, HTML, JavaScript and Python Libraries, this section displays the data in the form of live graphs using various technologies.</p>
+             <p>With the help of CSS, HTML, JavaScript and Python Libraries, this section displays the live data in the form of graphs.</p>
               </div>
           </div>
       </div>
