@@ -12,7 +12,7 @@ function  updateLevelInfo(val,remBtTime) {
   let batteryLevel = val + "%";
   chargeElement.style.width = batteryLevel;
   chargeLevelElement.textContent = batteryLevel;
-  chargingTimeRef.innerText = remBtTime;
+  // chargingTimeRef.innerText = remBtTime;
 }
 
 // updateLevelInfo(56);
@@ -77,7 +77,7 @@ if(minutes<mins){
  const logMessage = ` ${hrs} hr and ${mins} min remaining`;
 
  // Return the log message
- return logMessage;
+//  return logMessage;
 }
 
     // Function to handle window resize
