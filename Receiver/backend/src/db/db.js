@@ -13,12 +13,12 @@ const { Sequelize } = require('sequelize');
 
 const sequelize = new Sequelize({
   dialect: 'postgres', // Replace with your database system (e.g., 'mysql', 'sqlite')
-  host: config.host,
-  port:config.port,
-  username: config.user,
+  host: config.db.host,
+  port:config.db.port,
+  username: config.db.user,
   // password: "rabin@#123",
-  password:config.password,
-  database: config.database,
+  password:config.db.password,
+  database: config.db.database,
 });
 
 module.exports = sequelize;
