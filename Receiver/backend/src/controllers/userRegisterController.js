@@ -7,10 +7,15 @@ const{ UserReq, UserRes} = require('../dto/userRegisterDTO');
 const UserRegisterService = require('../services/userRegisterService');
 const logger = require("../utils/logger");
 router.use(bodyParser.json());
+const {validationResult} = require('express-validator')
 router.post('/register', async (req, res) => {
   try {
 logger.info("User register controller");
 
+    const errors = validationResult(req);
+    if(!errors.isEmpty()){
+      return res.status(400).json({errors:errors.array()})
+    }
     let { firstName, lastName, email,password } = req.body;
      password= await UserRegisterService.hashPassword(password);
     // console.log(password);
