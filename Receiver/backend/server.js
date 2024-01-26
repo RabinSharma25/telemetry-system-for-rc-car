@@ -13,6 +13,7 @@ const server = http.createServer(app);
 const wss = new WebSocket.Server({ server });
 const parser = new ReadlineParser({ delimiter: "\n" });
 const {Worker,isMainThread} = require("worker_threads");
+const bodyParser = require("body-parser");
 
 const threadFilePath = './src/ML-Model/model.js'; // path to the ml-model thread
 
@@ -24,23 +25,27 @@ app.use((req, res, next) => {
   res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
   next();
 });
+app.use(express.json());
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended:true}))
+// app.use(cors());
 app.use('/api', apiRoutes); // to call use http://localhost:3000/api/users/users
 server.listen(3000, function () {
   logger.info("Server is running on port 3000.");
 });
 
-var serialport = new SerialPort({
-  path: "/dev/ttyUSB0",
-  baudRate: 9600
-});
+// var serialport = new SerialPort({
+//   path: "/dev/ttyUSB0",
+//   baudRate: 9600
+// });
 
-serialport.open((err) => {
-  if (err) {
-    // console.log("Error opening the port" + err.message);
-  }
-});
+// serialport.open((err) => {
+//   if (err) {
+//     // console.log("Error opening the port" + err.message);
+//   }
+// });
 
-serialport.pipe(parser);
+// serialport.pipe(parser);
 
 const outputStream = fs.createWriteStream("output.csv", { flags: "a" });
 
