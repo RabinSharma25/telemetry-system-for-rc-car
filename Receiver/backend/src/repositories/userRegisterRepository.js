@@ -11,7 +11,7 @@ async function userExists(email) {
   return !!existingUser;
 }
 
-async function createUser(userData) {
+async function createUser(userData){
   const email= userData.email;
   logger.info("userRegisterRepository.createUser");
   // Check if the user already exists
@@ -26,4 +26,3 @@ async function createUser(userData) {
 }
 
 module.exports = { createUser};
-

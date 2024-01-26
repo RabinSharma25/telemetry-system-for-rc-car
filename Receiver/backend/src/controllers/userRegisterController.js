@@ -8,6 +8,11 @@ const UserRegisterService = require('../services/userRegisterService');
 const logger = require("../utils/logger");
 router.use(bodyParser.json());
 const {validationResult} = require('express-validator')
+const randomstring = require('randomstring');
+const sendMail = require("../utils/mail");
+
+
+
 router.post('/register', async (req, res) => {
   try {
 logger.info("User register controller");
@@ -31,6 +36,13 @@ logger.info("User register controller");
     let success = true;
     const userRes = new UserRes({id,firstName,lastName,email,message,success})
     // console.log(userRes);
+    let mailSubject = "Mail Verification";
+    const randomToken = randomstring.generate();
+    let content = "<p> Hii "+req.body.firstName+", please <a href='www.google.com'>Verify</a>"; 
+
+    sendMail(req.body.email,mailSubject,content)
+
+
     res.status(201).json(userRes);
   } catch (error) {
     console.error('Error creating user:', error);
