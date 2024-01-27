@@ -12,52 +12,21 @@ router.use(bodyParser.json());
 router.use(cookieParser());
 
 // logger.info("User login controller");
-router.post('/login', async (req, res) => {
-    try {
-        logger.info("User login controller.")
-        let { email, password } = req.body;
-        let message, success,jwt;
-        const loginReq = new LoginReq({ email, password })
+async function LoginUser(req, res) {
+    logger.info("User login controller.")
 
+    const [result, err] = await UserLoginService.LoginUser(req.body);
 
-        const authResult = await UserLoginService.authenticateUser(loginReq);
-
-
-        if (authResult) {
-            const { token } = authResult;
-            res.cookie('jwt', token, { httpOnly: true });
-            success = true;
-            message = "Suuccessfully logged in";
-            jwt = token
-            const loginRes = new LoginRes({message,success,jwt})
-            res.json(loginRes);
-        } else {
-            res.status(401).json({ success: false, message: 'Invalid email or password' });
-        }
+    if (err != null) {
+        res.status(500).json(result)
+        return 0;
     }
+    res.status(201).json(result);
+    return 0;
 
-    // console.log("Input json ");
-    // console.log(loginReq);
+}
 
-    // id = user.id
-    // firstName = user.firstName
-    // lastName = user.lastName
-    // name = firstName + " " + lastName
-    // let eml = user.email
-    // let passwrd = user.password
-    // success = true;
-    // message = "Successfully Logged in"
 
-    // const isMatch =  UserLoginService.comparePasswords(password,passwrd);
-    // if(isMatch){
-    // const loginRes = new LoginRes({ name, message, success });
-    // console.log(loginRes);
-    // res.status(201).json(loginRes);
-    // }
-    catch (error) {
-        console.error('Error creating user:', error);
-        res.status(500).json({ error: 'Error creating user' });
-    }
-});
 
-module.exports = router;
+
+module.exports = { LoginUser };

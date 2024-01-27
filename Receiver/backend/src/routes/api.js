@@ -9,6 +9,6 @@ const {signUpValidation} = require("../validators/validator")
 const router = express.Router();
 
 router.use('/register', signUpValidation,userRegisterController.RegisterUser);
-router.use('/login',userLoginController);
+router.use('/login',userLoginController.LoginUser);
 logger.info("Routes loaded successfully");
 module.exports = router;
