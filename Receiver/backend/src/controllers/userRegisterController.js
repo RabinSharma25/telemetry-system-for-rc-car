@@ -31,6 +31,9 @@ logger.info("User register controller");
 
     });
 
+    return 0;
+    
+
 }
 
 module.exports = {RegisterUser};
