@@ -25,8 +25,8 @@ const [res, err] = await UserRegisterRepository.RegisterUser(userData)
 
   let mailSubject = "Mail Verification";
   const randomToken = randomstring.generate();
-  let content = "<p> Hii " + req.body.firstName + ", please <a href='www.google.com'>Verify</a>";
-  sendMail(req.body.email, mailSubject, content)
+  let content = "<p> Hii " + userData.firstName + ", please <a href='www.google.com'>Verify</a>";
+  sendMail(userData.email, mailSubject, content)
 
   return [res,null]
 

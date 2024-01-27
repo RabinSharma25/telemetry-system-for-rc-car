@@ -23,7 +23,7 @@ async function RegisterUser(userData){
 
   // logger.info("User register repository");
   const user = await User.create(userData);
-  return user,null
+  return [user,null];
 }
 
 module.exports = { RegisterUser};
