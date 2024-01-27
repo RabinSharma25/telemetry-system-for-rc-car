@@ -2,23 +2,40 @@
 
 const UserRegisterRepository = require('../repositories/userRegisterRepository');
 const logger = require("../utils/logger")
-const bcrypt = require('bcrypt');
-const saltRounds = 10;
+const randomstring = require('randomstring');
+const sendMail = require("../utils/mail");
+const utils = require("../utils/genericFun")
 
-  async function  createUser(userData) {
-    logger.info("User register service");
-    return await UserRegisterRepository.createUser(userData)
+
+async function RegisterUser(userData) {
+
+
+  pass = await utils.hashPassword(userData.password);
+  userData.password = pass;
+
+
+  logger.info("User register service");
+const [res, err] = await UserRegisterRepository.RegisterUser(userData)
+  if (err != null) {
+    return [{
+      Success: false,
+      Message: err.message
+    }, err]
   }
-  // Implement other business logic here
+
+  let mailSubject = "Mail Verification";
+  const randomToken = randomstring.generate();
+  let content = "<p> Hii " + req.body.firstName + ", please <a href='www.google.com'>Verify</a>";
+  sendMail(req.body.email, mailSubject, content)
+
+  return [res,null]
 
 
-async function hashPassword(password) {
-  try {
-    const hashedPassword = await bcrypt.hash(password, saltRounds);
-    return hashedPassword;
-  } catch (error) {
-    console.error('Error hashing password:', error.message);
-    return false;
-  }
+
+
 }
-module.exports ={ createUser,hashPassword};
+// Implement other business logic here
+
+
+
+module.exports = { RegisterUser };
