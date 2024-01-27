@@ -10,7 +10,7 @@ const {validationResult} = require('express-validator')
 
 
 async function RegisterUser ( req, res ) {
-  try {
+
 logger.info("User register controller");
 
     const errors = validationResult(req);
@@ -24,16 +24,13 @@ logger.info("User register controller");
       return 0;
     }
     res.status(201).json({
-      id:user.id,
-      firstName:user.firstName,
-      lastName:user.lastName,
+      id:result.id,
+      firstName:result.firstName,
+      lastName:result.lastName,
       message:"Successfully registered"
 
     });
-  } catch (error) {
-    console.error('Error creating user:', error);
-    res.status(500).json({ error: 'Error creating user' });
-  } 
+
 }
 
 module.exports = {RegisterUser};
