@@ -78,6 +78,6 @@ onnx_model_path = './Receiver/backend/src/ML-Model/onnx_model.onnx'
 trained_model = train_test_predict(result_csv_path)
 
 # Save the model and get the saved model
-save_model(trained_model, saved_model_path)
+# save_model(trained_model, saved_model_path)
 
-save_model_to_onnx(saved_model_path , onnx_model_path, X_train)
+# save_model_to_onnx(saved_model_path , onnx_model_path, X_train)

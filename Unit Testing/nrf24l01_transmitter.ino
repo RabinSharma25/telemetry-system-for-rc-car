@@ -10,8 +10,7 @@
   MISO-- D12
 
 */
-
-#include <Wire.h>
+#include <SPI.h>
 #include "RF24.h"
 
 RF24 myRadio(9, 10);
