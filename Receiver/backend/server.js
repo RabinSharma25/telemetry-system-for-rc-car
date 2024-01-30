@@ -25,7 +25,7 @@ app.use((req, res, next) => {
   res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
   next();
 });
-app.use(express.json());
+// app.use(express.json());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended:true}))
 // app.use(cors());
@@ -34,10 +34,10 @@ server.listen(3000, function () {
   logger.info("Server is running on port 3000.");
 });
 
-var serialport = new SerialPort({
-  path: "/dev/ttyACM0",
-  baudRate: 9600
-});
+// var serialport = new SerialPort({
+//   path: "/dev/ttyACM0",
+//   baudRate: 9600
+// });
 
 // serialport.open((err) => {
 //   if (err) {

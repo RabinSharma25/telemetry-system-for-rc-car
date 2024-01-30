@@ -23,7 +23,7 @@ logger.info("User register controller");
       res.status(500).json(result)
       return 0;
     }
-    res.status(201).json({
+    res.status(200).json({
       id:result.id,
       firstName:result.firstName,
       lastName:result.lastName,
