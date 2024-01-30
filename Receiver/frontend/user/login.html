@@ -61,8 +61,9 @@
       password: formData.get('password')
     };
     var fullJSON = JSON.stringify(jsonObject); // Convert the object to JSON format
-  
-    fetch('http://localhost:3000/api/login/login', {
+    console.log(jsonObject);
+    console.log(fullJSON);
+    fetch('http://localhost:3000/api/login', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
