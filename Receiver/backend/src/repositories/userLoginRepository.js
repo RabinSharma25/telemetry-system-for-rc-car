@@ -23,10 +23,14 @@ async function LoginUser(email, password) {
       logger.info("Successfully logged In")
       return [user, null] // Return the user if found
     }
+    else{
+      logger.error("Incorrect Password");
+      return [null, new Error("Incorrect password")] // Return the user if found
+    }
 
   } else {
     logger.error("Login Failed");
-    return [null, new Error('Incorrect password or email')]; // Throw an error if user is not found
+    return [null, new Error('The email does not exist')]; // Throw an error if user is not found
   }
 
 }
