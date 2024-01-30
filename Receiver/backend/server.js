@@ -35,18 +35,18 @@ server.listen(3000, function () {
   logger.info("Server is running on port 3000.");
 });
 
-// var serialport = new SerialPort({
-//   path: "/dev/ttyACM0",
-//   baudRate: 9600
-// });
+var serialport = new SerialPort({
+  path: "/dev/ttyACM0",
+  baudRate: 9600
+});
 
-// serialport.open((err) => {
-//   if (err) {
-//     // console.log("Error opening the port" + err.message);
-//   }
-// });
+serialport.open((err) => {
+  if (err) {
+    // console.log("Error opening the port" + err.message);
+  }
+});
 
-// serialport.pipe(parser);
+serialport.pipe(parser);
 
 const outputStream = fs.createWriteStream("output.csv", { flags: "a" });
 
