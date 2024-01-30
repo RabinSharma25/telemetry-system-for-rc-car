@@ -93,7 +93,7 @@
   // 
   
   var fullJSON = JSON.stringify(jsonObject, null, 2); // Convert the object to full JSON format
-  console.log(fullJSON); // Output the full JSON string to console
+  // console.log(fullJSON); // Output the full JSON string to console
 
 
       fetch('http://localhost:3000/api/register', {
@@ -103,7 +103,9 @@
         body: fullJSON
       })
       .then(response => {
+        console.log(response);
             if (response.ok) {
+              
        console.log('Registeration successfully!');
          Swal.fire({
           icon: 'success',
