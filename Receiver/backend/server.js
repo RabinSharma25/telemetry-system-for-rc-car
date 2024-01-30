@@ -7,6 +7,7 @@ const { SerialPort } = require("serialport");
 const logger = require("./src/utils/logger");
 const { ReadlineParser } = require("@serialport/parser-readline");
 const fs = require("fs");
+const cors = require('cors');
 
 const app = express();
 const server = http.createServer(app);
@@ -28,7 +29,7 @@ app.use((req, res, next) => {
 // app.use(express.json());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended:true}))
-// app.use(cors());
+app.use(cors());
 app.use('/api', apiRoutes); // to call use http://localhost:3000/api/users/users
 server.listen(3000, function () {
   logger.info("Server is running on port 3000.");
