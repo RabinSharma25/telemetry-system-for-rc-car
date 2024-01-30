@@ -1,25 +1,39 @@
 const logger = require('../utils/logger'); // Import your logger configuration
 
-// services/userService.js
-
 const User = require('../models/user');
+// const { Utils } = require('sequelize');
+const utils = require("../utils/genericFun")
 
 // Function to find a user by email
-async function findUserByEmail(email) {
+async function LoginUser(email, password) {
   logger.info("User login repository");
-  try {
-    const user = await User.findOne({
-      where: { email: email },
-    });
+  console.log(password);
 
-    if (user) {
-      return user // Return the user if found
-    } else {
-      throw new Error('User not found'); // Throw an error if user is not found
+  const user = await User.findOne({
+    where: {
+      email: email
     }
-  } catch (error) {
-    throw new Error('Error finding user by email: ' + error.message); // Throw an error if any other error occurs
-  }
-}
+  });
 
-module.exports = { findUserByEmail };
+  if (user) {
+    console.log(password);
+    console.log(user.password);
+    const val = await utils.comparePasswords(password,user.password);
+    if (val){
+      logger.info("Successfully logged In")
+      return [user, null] // Return the user if found
+    }
+    else{
+      logger.error("Incorrect Password");
+      return [null, new Error("Incorrect password")] // Return the user if found
+    }
+
+  } else {
+    logger.error("Login Failed");
+    return [null, new Error('The email does not exist')]; // Throw an error if user is not found
+  }
+
+}
+module.exports = { LoginUser };
+
+
