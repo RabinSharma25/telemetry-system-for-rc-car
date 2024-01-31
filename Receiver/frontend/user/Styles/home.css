@@ -130,6 +130,10 @@ html {
   h1{
     font-family: 'Exo', sans-serif;
     color:cornsilk;
+    margin-bottom: 30px;
+    justify-content: center;
+    text-align: center;
+
 }
   
   @keyframes slide {
@@ -140,3 +144,22 @@ html {
       transform:translateX(25%);
     }
   }
+  #rc{
+    width: 25vw;
+    height: 25vw;
+    border-radius: 50%;
+    margin-left: 10vw;
+    display: flex;
+  }
+  p{
+    color: white;
+    margin-left: 50px;
+    justify-content: center;
+    text-align: center;
+    margin-bottom: 50px;
+
+  }
+img{
+  margin-right: 50px;
+  display: flex;
+}
