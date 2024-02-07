@@ -24,10 +24,11 @@ socket.addEventListener("message", (event) => {
   dataArray = event.data.split(',');
   console.log(dataArray);
   value = parseFloat(dataArray[5]);
-  let mappedValue = mapRange((value-6), 0, 2.4, 0, 100);
-  if(mappedValue<val){
-    val = mappedValue;
-  }
+  let mappedValue = mapRange(value, 0, 8.4, 0, 100);
+  val = mappedValue;
+  // if(mappedValue<val){
+  //   val = mappedValue;
+  // }
   let remainingBattTime = calculateRemainingTime( value);
   updateLevelInfo(val,remainingBattTime);
 });

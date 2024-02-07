@@ -1,3 +1,11 @@
+// let noOfRotations =0;
+const wheelRadius = 0.035 // m // 3.5 cm
+const circumOfWheel = 0.219905; // 2*pi*r // 2*3.1415*0.035 = 0.219905 m
+
+
+
+
+
 const points=50;
  updateValues();
  function updateValues(){
@@ -485,7 +493,9 @@ const VelGraph = new Chart(vel, {
 function updateVelocity(value) {
   // Extract the label for the graph (empty for demonstration)
   const label = "";
-
+  let velocity1 = circumOfWheel* value/2 // m/s //// we are diving by 2 as the number of rotations are calculated every 2 sec.
+  // console.log("Velocity = ",velocity);
+  let vel=3.6*velocity1; //km/hr conversion
   // Check and remove the oldest data point if it exceeds the limit
   if (VelGraph.data.labels.length >= points) {
     VelGraph.data.labels.shift();
@@ -496,7 +506,7 @@ function updateVelocity(value) {
 
   // Update the graph with new data for each dataset
   VelGraph.data.labels.push(label);
-  VelGraph.data.datasets[0].data.push(value);
+  VelGraph.data.datasets[0].data.push(vel);
   VelGraph.update('none');
 }
 
